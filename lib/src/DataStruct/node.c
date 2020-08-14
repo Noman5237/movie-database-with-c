@@ -1,26 +1,36 @@
-
-/* Created By: Anonyman637
- * Created On: 8/11/2020 1:05 AM
+/**
+ * @file node.c
+ * @author Anonyman637
+ * @date 8/11/2020; 1:05 AM
  */
+
 
 #include <DataStruct/node.h>
 #include <exception.h>
 
+
 /* ============================== CONSTRUCTOR ========================= */
 
-LinkedList *new() {
+
+LinkedList *init() {
 	LinkedList *ll = (LinkedList *) malloc(sizeof(LinkedList));
+	if (!ll) {
+		return EXCEPTION_NEW(OUT_OF_MEMORY), (LinkedList *)NULL;
+	}
+	
 	ll->_size = 0;
-	ll->_head = NULL;
+	ll->_head = (Node *) NULL;
 	
 	return ll;
 }
 
+
 /* ============================== ACCESSOR ========================= */
 
-INT get(LinkedList *ll, int index) {
+
+node_t get(LinkedList *ll, int index) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	int reverse = 0;
@@ -28,11 +38,14 @@ INT get(LinkedList *ll, int index) {
 	if (index < 0) {
 		reverse = 1;
 		index *= -1;
+		
+		// Although -size is a valid index,
+		// it still needs to pass the INDEX_OUT_OF_BOUNDS test
 		--index;
 	}
 	
 	if (index >= ll->_size) {
-		return exception_new(INDEX_OUT_OF_BOUNDS);
+		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS);
 	}
 	
 	Node *node = ll->_head;
@@ -40,73 +53,82 @@ INT get(LinkedList *ll, int index) {
 	if (!reverse) {
 		for (int i = 0; i < index; ++i, node = node->next);     // Empty Body
 	} else {
+		// Remember! we cut off index by 1 when it is reverse
 		for (int i = 0; i <= index; ++i, node = node->prev);    // Empty Body
 	}
 	
 	return node->data;
 }
 
-int foreach(LinkedList *ll, int (*callback)(int)) {
+
+int forEach(LinkedList *ll, int (*callback)(int)) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	Node *node = ll->_head;
 	for (int i = 0; i < ll->_size; ++i, node = node->next) {
 		if (callback(node->data)) {
-			return exception_new(CALLBACK_ERROR);
+			return EXCEPTION_NEW(CALLBACK_ERROR);
 		}
 	}
 	
 	return 0;
 }
 
-int traverse(LinkedList *ll) {
-	if (!ll) {
-		return exception_new(INVALID_POINTER);
-	}
-
-	foreach(ll, printer);
-	
-	return 0;
-}
 
 /* ============================== CAPACITY ========================= */
 
+
 int size(LinkedList *ll) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER), -1;
+		return EXCEPTION_NEW(INVALID_POINTER), -1;
 	}
 	
 	return ll->_size;
 }
 
+
 int empty(LinkedList *ll) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	return ll->_size == 0;
 }
+
+
 /* ============================== MODIFIERS ========================= */
 
-int append(LinkedList *ll, INT data) {
+
+int append(LinkedList *ll, node_t newData) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	Node *node = (Node *) malloc(sizeof(Node));
-	node->data = data;
 	
-	if (!ll->_head) {
+	if (!node) {
+		return EXCEPTION_NEW(OUT_OF_MEMORY);
+	}
+	
+	node->data = newData;
+	
+	if (!ll->_size) {
+		// When a node is alone it points to itself!
 		node->prev = node;
 		node->next = node;
 		ll->_head = node;
+		
+		++ll->_size;
+		
+		return 0;
 	}
 	
 	Node *head = ll->_head;
 	Node *last = head->prev;
 	
+	// We are inserting the new node in the junction of head and last node
 	head->prev = node;
 	node->next = head;
 	
@@ -118,9 +140,10 @@ int append(LinkedList *ll, INT data) {
 	return 0;
 }
 
-int insert(LinkedList *ll, int index, INT data) {
+
+int insert(LinkedList *ll, int index, node_t newData) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	int reverse = 0;
@@ -128,11 +151,13 @@ int insert(LinkedList *ll, int index, INT data) {
 	if (index < 0) {
 		reverse = 1;
 		index *= -1;
+		// Although -size is a valid index,
+		// it still needs to pass the INDEX_OUT_OF_BOUNDS test
 		--index;
 	}
 	
 	if (index >= ll->_size) {
-		return exception_new(INDEX_OUT_OF_BOUNDS);
+		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS);
 	}
 	
 	Node *curr = ll->_head;
@@ -140,21 +165,34 @@ int insert(LinkedList *ll, int index, INT data) {
 	if (!reverse) {
 		for (int i = 0; i < index; ++i, curr = curr->next);     // Empty Body
 	} else {
-		for (int i = 0; i <= index; ++i, curr = curr->prev);    // Empty Body
+		// Remember! we cut off index by 1 when it is reverse
+		// But when inserting in reverse, we can't let reverse index replace head
+		// Because inserting -size is theoretically impossible
+		// Because after inserting the index of new node will be -(size + 1) which destroys consistency
+		for (int i = 0; i < index; ++i, curr = curr->prev);    // Empty Body
 	}
+	
+	Node *node = (Node *) malloc(sizeof(Node));
+	
+	if (!node) {
+		return EXCEPTION_NEW(OUT_OF_MEMORY);
+	}
+	
+	node->data = newData;
 	
 	Node *prev = curr->prev;
 	
-	Node *node = (Node *) malloc(sizeof(Node));
-	node->data = data;
-	
+	// We place node at the index of curr node
 	prev->next = node;
 	node->prev = prev;
 	
 	curr->prev = node;
 	node->next = curr;
 	
-	if (index == 0) {
+	// When inserting in reverse, we can't let reverse index replace head
+	// Because inserting -size is theoretically impossible
+	// Because after inserting the index of new node will be -(size + 1) which destroys consistency
+	if (index == 0 && !reverse) {
 		ll->_head = node;
 	}
 	
@@ -163,9 +201,10 @@ int insert(LinkedList *ll, int index, INT data) {
 	return 0;
 }
 
+
 int erase(LinkedList *ll, int index) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	int reverse = 0;
@@ -173,11 +212,13 @@ int erase(LinkedList *ll, int index) {
 	if (index < 0) {
 		reverse = 1;
 		index *= -1;
+		// Although -size is a valid index,
+		// it still needs to pass the INDEX_OUT_OF_BOUNDS test
 		--index;
 	}
 	
 	if (index >= ll->_size) {
-		return exception_new(INDEX_OUT_OF_BOUNDS);
+		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS);
 	}
 	
 	Node *curr = ll->_head;
@@ -185,12 +226,14 @@ int erase(LinkedList *ll, int index) {
 	if (!reverse) {
 		for (int i = 0; i < index; ++i, curr = curr->next);     // Empty Body
 	} else {
+		// Remember! we cut off index by 1 when it is reverse
 		for (int i = 0; i <= index; ++i, curr = curr->prev);    // Empty Body
 	}
 	
 	Node *prev = curr->prev;
 	Node *next = curr->next;
 	
+	// Replacing references of the neighboring nodes of curr node
 	prev->next = next;
 	next->prev = prev;
 	
@@ -204,9 +247,10 @@ int erase(LinkedList *ll, int index) {
 	return 0;
 }
 
-int set(LinkedList *ll, int index, INT newData) {
+
+int set(LinkedList *ll, int index, node_t newData) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	int reverse = 0;
@@ -214,11 +258,13 @@ int set(LinkedList *ll, int index, INT newData) {
 	if (index < 0) {
 		reverse = 1;
 		index *= -1;
+		// Although -size is a valid index,
+		// it still needs to pass the INDEX_OUT_OF_BOUNDS test
 		--index;
 	}
 	
 	if (index >= ll->_size) {
-		return exception_new(INDEX_OUT_OF_BOUNDS);
+		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS);
 	}
 	
 	Node *node = ll->_head;
@@ -226,6 +272,7 @@ int set(LinkedList *ll, int index, INT newData) {
 	if (!reverse) {
 		for (int i = 0; i < index; ++i, node = node->next);     // Empty Body
 	} else {
+		// Remember! we cut off index by 1 when it is reverse
 		for (int i = 0; i <= index; ++i, node = node->prev);    // Empty Body
 	}
 	
@@ -234,15 +281,20 @@ int set(LinkedList *ll, int index, INT newData) {
 	return 0;
 }
 
+
 /* ============================== DESTRUCTOR ========================= */
 
-int delete(LinkedList *ll) {
+
+int destroy(LinkedList *ll) {
 	if (!ll) {
-		return exception_new(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
 	Node *node = ll->_head;
 	Node *next = node->next;
+	
+	// Although at the end of the loop next will point to freed address
+	// Because the loop always terminates by following condition
 	for (int i = 0; i < ll->_size; ++i, node = next, next = next->next) {
 		free(node);
 	}
@@ -251,9 +303,24 @@ int delete(LinkedList *ll) {
 	return 0;
 }
 
+
 /* ============================== UTILITY ========================= */
 
-int printer(INT data) {
+
+int traverse(LinkedList *ll) {
+	if (!ll) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
+	
+	forEach(ll, printer);
+	printf("\n");
+	
+	return 0;
+}
+
+
+int printer(node_t data) {
 	printf("%d ", data);
 	return 0;
 }
+

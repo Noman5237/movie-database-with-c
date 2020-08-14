@@ -115,11 +115,18 @@ typedef struct LinkedList {
  * Creates a new empty **Doubly Circular Linked List**
  * on heap and returns a pointer to the instantiated object.
  *
+ * @throws OUT_OF_MEMORY if allocation is not possible for new list.
+ *
  * @return
- * Pointer to new empty **Doubly Circular Linked List**.
+ * Pointer to new empty **Doubly Circular Linked List** if successful,
+ * otherwise returns NULL if exception handler is not brutal.
  *
  * <p>
  * **Complexity** O(1)
+ *
+ * @note
+ * Initially this function was named new.
+ * But it interfered with Tests run in C++ using GoogleTest
  *
  * @attention
  * It is recommended to use init() function to create a new linked list
@@ -173,6 +180,9 @@ LinkedList *init();
  * @param ll Pointer to the linked list instantiated by init()
  * @param index Index of the desired data to look up
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws INDEX_OUT_OF_BOUND if **index** is invalid in the perspective of **ll**.
+ *
  * @return
  * Data of desired element, given the list and index.
  *
@@ -216,19 +226,25 @@ node_t get(LinkedList *ll, int index);
 
 /**
  * Given the linked list pointer and callback function,
- * foreach function calls the callback function passing
+ * forEach function calls the callback function passing
  * each element of the list sequentially.
  *
  * @param ll Pointer to the linked list instantiated by init()
  * @param callback Callback function that takes the supplied data
  * and returns Zero(0) on successful execution
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws CALLBACK_ERROR if **callback** responded with value other than Zero(0).
+ *
  * @return
- * Zero(0) if every callback function executes successfully,
- * otherwise throws a new exception with CALLBACK_ERROR.
+ * Zero(0) if every callback function executes successfully.
  *
  * <p>
  * **Complexity** O(*size*)
+ *
+ * @note
+ * Initially this function was named foreach.
+ * But both Doxygen identifies foreach as keyword
  *
  * #### Example
  * ~~~.c
@@ -252,8 +268,8 @@ node_t get(LinkedList *ll, int index);
  * 	append(ll, 2);
  * 	append(ll, 3);
  * 	append(ll, 7);
- * 	// foreach demo
- * 	foreach(ll, square);
+ * 	// forEach demo
+ * 	forEach(ll, square);
  * 	// Traversing ll and sq
  * 	traverse(ll);
  * 	traverse(sq);
@@ -273,7 +289,7 @@ node_t get(LinkedList *ll, int index);
  *
  * @see append() destroy() traverse()
  */
-int foreach(LinkedList *ll, int (*callback)(int));
+int forEach(LinkedList *ll, int (*callback)(int));
 
 
 /* ============================== CAPACITY ========================= */
@@ -284,9 +300,11 @@ int foreach(LinkedList *ll, int (*callback)(int));
  *
  * @param ll Pointer to the linked list instantiated by init()
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ *
  * @return
- * Size of the provided list **ll** if **ll** is valid,
- * otherwise returns -1 given that program is not running in STRICT mode.
+ * Size of the provided list if successful,
+ * otherwise -1 if exception handler is not brutal.
  *
  * <p>
  * **Complexity** O(1)
@@ -327,6 +345,8 @@ int size(LinkedList *ll);
  * Checks whether the provided list is empty.
  *
  * @param ll Pointer to the list instantiated by init()
+ *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
  * @return
  * True(1) if size of provided list is Zero(0),
@@ -383,6 +403,9 @@ int empty(LinkedList *ll);
  * @param ll Pointer to the linked list instantiated by init()
  * @param newData New data to be appended at the end of the list
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws OUT_OF_MEMORY if allocation is not possible for new data.
+ *
  * @return
  * Zero(0) if successful.
  *
@@ -433,6 +456,10 @@ int append(LinkedList *ll, node_t newData);
  * @param ll Pointer to the linked list instantiated by init()
  * @param index Existing index for the new data to insert at
  * @param newData Data to be inserted at desired index of the list
+ *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws INDEX_OUT_OF_BOUND if **index** is invalid in the perspective of **ll**.
+ * @throws OUT_OF_MEMORY if allocation is not possible for new data.
  *
  * @return
  * Zero(0) if successful.
@@ -501,6 +528,9 @@ int insert(LinkedList *ll, int index, node_t newData);
  * So -1 as index value will erase the last element of the list,
  * and so will -2 erase the second last element of the list.
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws INDEX_OUT_OF_BOUND if **index** is invalid in the perspective of **ll**.
+ *
  * @param ll Pointer to the linked list instantiated by init()
  * @param index Index of the element to erase
  *
@@ -566,6 +596,9 @@ int erase(LinkedList *ll, int index);
  * @param index Index of the desired data to modify
  * @param newData Value of the new data for desired indexed element in list
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ * @throws INDEX_OUT_OF_BOUND if **index** is invalid in the perspective of **ll**.
+ *
  * @return
  * Zero(0) if *data* of the element of the desired index was replaced with **newData**
  *
@@ -611,12 +644,18 @@ int set(LinkedList *ll, int index, node_t newData);
  *
  * @param ll Pointer to the linked list instantiated by init()
  *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
+ *
  * @return
  * Zero(0) if linked list **ll** was successfully freed
  * along with its rest of its elements.
  *
  * <p>
  * **Complexity** O(*size*)
+ *
+ * @note
+ * Initially this function was named delete.
+ * But it interfered with Tests run in C++ using GoogleTest
  *
  * @attention
  * It is recommended to use init() function to create a new linked list
@@ -662,17 +701,23 @@ int destroy(LinkedList *ll);
  *
  * <p>
  * traverse is a minimal utility function to print the elements of the list.
- * It is implemented using foreach() and another utility function printer().
+ * It is implemented using forEach() and another utility function printer().
  * It is recommended that users should make their own traverse function
  * for customization and flexibility.
  *
  * @param ll Pointer to the linked list instantiated by init()
+ *
+ * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
  * @return
  * Zero(0) if linked list **ll** was successfully traversed.
  *
  * <p>
  * **Complexity** O(*size*)
+ *
+ * @note
+ * There was no intention of creating traverse.
+ * But its useful in some way for someone.
  *
  * #### Example
  * ~~~.c
@@ -700,7 +745,7 @@ int destroy(LinkedList *ll);
  *
  * ~~~
  *
- * @see printer() foreach()
+ * @see printer() forEach()
  */
 int traverse(LinkedList *ll);
 

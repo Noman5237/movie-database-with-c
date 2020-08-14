@@ -1,23 +1,24 @@
-
-/* Created By: Anonyman637
- * Created On: 8/11/2020; 2:14 AM
+/**
+ * @file queue.c
+ * @author: Anonyman637
+ * @date: 8/11/2020; 2:14 AM
  */
 
 #include <DataStruct/queue.h>
 
 /* ============================== ACCESSOR ========================= */
 
-INT front(Queue *queue) {
+node_t front(Queue *queue) {
 	return get(queue, 0);
 }
 
-INT back(Queue *queue) {
+node_t back(Queue *queue) {
 	return get(queue, -1);
 }
 
 /* ============================== MODIFIERS ========================= */
 
-int enqueue(Queue *queue, INT data) {
+int enqueue(Queue *queue, node_t data) {
 	return append(queue, data);
 }
 
