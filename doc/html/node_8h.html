@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('node_8h.html',''); initResizable(); })
 Include dependency graph for node.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="node_8h__incl.png" border="0" usemap="#alib_2include_2_data_struct_2node_8h" alt=""/></div>
-<map name="lib_2include_2_data_struct_2node_8h" id="lib_2include_2_data_struct_2node_8h">
+<map name="lib_2include_2_data_struct_2node_8h" id="alib_2include_2_data_struct_2node_8h">
 <area shape="rect" title=" " alt="" coords="7,5,153,47"/>
 <area shape="rect" title=" " alt="" coords="5,169,67,196"/>
 <area shape="rect" title=" " alt="" coords="111,169,175,196"/>
@@ -119,7 +119,7 @@ Include dependency graph for node.h:</div>
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="node_8h__dep__incl.png" border="0" usemap="#alib_2include_2_data_struct_2node_8hdep" alt=""/></div>
-<map name="lib_2include_2_data_struct_2node_8hdep" id="lib_2include_2_data_struct_2node_8hdep">
+<map name="lib_2include_2_data_struct_2node_8hdep" id="alib_2include_2_data_struct_2node_8hdep">
 <area shape="rect" title=" " alt="" coords="176,5,323,47"/>
 <area shape="rect" href="queue_8h.html" title=" " alt="" coords="5,95,152,136"/>
 <area shape="rect" href="stack_8h.html" title=" " alt="" coords="176,95,323,136"/>
@@ -254,7 +254,7 @@ Functions</h2></td></tr>
 
 <p>Linked List is a collection of nodes accessed by a single <b>Head <a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a></b> pointer. </p>
 <p>Conventionally this Linked List is more commonly known as <b>Circular Doubly Linked List</b> since it is made up of <b>Doubly</b> nodes and by design the modifier functions facilitate <b>Circular</b> list.</p>
-<h3><a class="anchor" id="autotoc_md2"></a>
+<h3><a class="anchor" id="autotoc_md6"></a>
 Design Preview</h3>
 <div class="fragment"><div class="line">+-------------------------------------------------------+</div>
 <div class="line">|                                                       |</div>
@@ -338,7 +338,7 @@ Design Preview</h3>
 <p><b>Complexity</b> O(1)</p>
 <dl class="section note"><dt>Note</dt><dd>Initially this function was named new. But it interfered with Tests run in C++ using GoogleTest</dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>It is recommended to use <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> function to create a new linked list and use <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by init().">destroy()</a> function to delete/free the allocated linked list unless you know what you are doing and also fully responsible for your actions.</dd></dl>
-<h4><a class="anchor" id="autotoc_md3"></a>
+<h4><a class="anchor" id="autotoc_md7"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -356,7 +356,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md8"></a>
 Output</h4>
 <div class="fragment"><div class="line">52 37</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list.">append()</a> <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by init().">destroy()</a> </dd></dl>
@@ -421,7 +421,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Data of desired element, given the list and index.</dd></dl>
 <p><b>Complexity</b> O(<b>index</b>)</p>
-<h4><a class="anchor" id="autotoc_md5"></a>
+<h4><a class="anchor" id="autotoc_md9"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -442,7 +442,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md10"></a>
 Output</h4>
 <div class="fragment"><div class="line">2nd element: 37</div>
 <div class="line">Last element: 637</div>
@@ -527,7 +527,7 @@ Output</h4>
 <dl class="section return"><dt>Returns</dt><dd>Zero(0) if every callback function executes successfully.</dd></dl>
 <p><b>Complexity</b> O(<em>size</em>)</p>
 <dl class="section note"><dt>Note</dt><dd>Initially this function was named foreach. But both Doxygen identifies foreach as keyword</dd></dl>
-<h4><a class="anchor" id="autotoc_md7"></a>
+<h4><a class="anchor" id="autotoc_md11"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -559,7 +559,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
 Output</h4>
 <div class="fragment"><div class="line">5 2 3 7</div>
 <div class="line">25 4 9 49</div>
@@ -614,7 +614,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Size of the provided list if successful, otherwise -1 if exception handler is not brutal.</dd></dl>
 <p><b>Complexity</b> O(1)</p>
-<h4><a class="anchor" id="autotoc_md9"></a>
+<h4><a class="anchor" id="autotoc_md13"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -633,7 +633,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md14"></a>
 Output</h4>
 <div class="fragment"><div class="line">3</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a6058336caaf0c464b47bf4fa2b90c0f6" title="Checks whether the provided list is empty.">empty()</a> <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> <a class="el" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list.">append()</a> </dd></dl>
@@ -680,7 +680,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True(1) if size of provided list is Zero(0), otherwise returns False(0).</dd></dl>
 <p><b>Complexity</b> O(1)</p>
-<h4><a class="anchor" id="autotoc_md11"></a>
+<h4><a class="anchor" id="autotoc_md15"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -705,7 +705,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md16"></a>
 Output</h4>
 <div class="fragment"><div class="line">ll is not <a class="code" href="node_8h.html#a6058336caaf0c464b47bf4fa2b90c0f6">empty</a>.</div>
 <div class="line">ll is <a class="code" href="node_8h.html#a6058336caaf0c464b47bf4fa2b90c0f6">empty</a>.</div>
@@ -765,7 +765,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero(0) if successful.</dd></dl>
 <p><b>Complexity</b> O(1)</p>
-<h4><a class="anchor" id="autotoc_md13"></a>
+<h4><a class="anchor" id="autotoc_md17"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -783,7 +783,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md18"></a>
 Output</h4>
 <div class="fragment"><div class="line">52 37</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by init().">destroy()</a> </dd></dl>
@@ -887,7 +887,7 @@ Output</h4>
  For example you cannot insert new data at the beginning of the list when the size of the list is 0. For that you must use <a class="el" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list.">append()</a>. <br  />
  And also if the size of a list is 3, you cannot insert at -4 to change the head, because -4 doesn't exist yet. In this case you can insert at 0, which will help you achieve your desired result. <br  />
  <em>Just remember, insert cannot be used into non-existing index and the newly inserted data will always hold the given index in the modified list.</em></dd></dl>
-<h4><a class="anchor" id="autotoc_md15"></a>
+<h4><a class="anchor" id="autotoc_md19"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -911,7 +911,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md20"></a>
 Output</h4>
 <div class="fragment"><div class="line">2 7</div>
 <div class="line">5 2 3 7</div>
@@ -1025,7 +1025,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero(0) if successful.</dd></dl>
 <p><b>Complexity</b> O(<b>index</b>)</p>
-<h4><a class="anchor" id="autotoc_md17"></a>
+<h4><a class="anchor" id="autotoc_md21"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -1053,7 +1053,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md22"></a>
 Output</h4>
 <div class="fragment"><div class="line">5 2 6 3 7 8</div>
 <div class="line">6 3 7</div>
@@ -1159,7 +1159,7 @@ Output</h4>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero(0) if <em>data</em> of the element of the desired index was replaced with <b>newData</b></dd></dl>
 <p><b>Complexity</b> O(<b>index</b>)</p>
-<h4><a class="anchor" id="autotoc_md19"></a>
+<h4><a class="anchor" id="autotoc_md23"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -1176,7 +1176,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md24"></a>
 Output</h4>
 <div class="fragment"><div class="line">Previous data last element: 37</div>
 <div class="line">Modified data last element: 637</div>
@@ -1251,7 +1251,7 @@ Output</h4>
 <p><b>Complexity</b> O(<em>size</em>)</p>
 <dl class="section note"><dt>Note</dt><dd>Initially this function was named delete. But it interfered with Tests run in C++ using GoogleTest</dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>It is recommended to use <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> function to create a new linked list and use <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by init().">destroy()</a> function to delete/free the allocated linked list unless you know what you are doing and also fully responsible for your actions.</dd></dl>
-<h4><a class="anchor" id="autotoc_md21"></a>
+<h4><a class="anchor" id="autotoc_md25"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -1269,7 +1269,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md22"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md26"></a>
 Output</h4>
 <div class="fragment"><div class="line">52 37</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> <a class="el" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list.">append()</a> </dd></dl>
@@ -1328,7 +1328,7 @@ Output</h4>
 <dl class="section return"><dt>Returns</dt><dd>Zero(0) if linked list <b>ll</b> was successfully traversed.</dd></dl>
 <p><b>Complexity</b> O(<em>size</em>)</p>
 <dl class="section note"><dt>Note</dt><dd>There was no intention of creating traverse. But its useful in some way for someone.</dd></dl>
-<h4><a class="anchor" id="autotoc_md23"></a>
+<h4><a class="anchor" id="autotoc_md27"></a>
 Example</h4>
 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="node_8h.html">DataStruct/node.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -1346,7 +1346,7 @@ Example</h4>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md24"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md28"></a>
 Output</h4>
 <div class="fragment"><div class="line">52 37</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a6a58e3e799ad6e0fa8099418772c9ec8" title="Prints out the data supplied to the default output stream with a trailing whitespace.">printer()</a> <a class="el" href="node_8h.html#ae6ee11ab91a4a58320a9853485dc57a1" title="Given the linked list pointer and callback function, forEach function calls the callback function pas...">forEach()</a> </dd></dl>
@@ -1366,7 +1366,7 @@ Output</h4>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="node_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph.png" border="0" usemap="#anode_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph" alt=""/></div>
-<map name="node_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph" id="node_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph">
+<map name="node_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph" id="anode_8h_afac8587f402c4b50c8bf9c8b126a634f_cgraph">
 <area shape="rect" title="Prints all the elements of the provided linked list separated by space which ends with newline." alt="" coords="5,31,72,57"/>
 <area shape="rect" href="node_8c.html#ae6ee11ab91a4a58320a9853485dc57a1" title="Given the linked list pointer and callback function, forEach function calls the callback function pas..." alt="" coords="120,5,187,32"/>
 <area shape="rect" href="node_8c.html#a6a58e3e799ad6e0fa8099418772c9ec8" title="Prints out the data supplied to the default output stream with a trailing whitespace." alt="" coords="124,56,183,83"/>
