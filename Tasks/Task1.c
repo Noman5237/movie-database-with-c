@@ -35,7 +35,7 @@ int main() {
 	printf("Stack %s empty.\n", empty(stack) ? "is": "is not");
 	
 	// Popping from an empty stack
-	pop(stack);
+	// pop(stack);
 	
 	// Freeing the memory allocated on heap by new
 	destroy(stack);

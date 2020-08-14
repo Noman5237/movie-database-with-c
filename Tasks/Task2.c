@@ -42,7 +42,7 @@ int main() {
 	printf("Queue %s empty.\n", empty(queue) ? "is": "is not");
 	
 	// De-queuing an empty queue exits with error in strict mode
-	dequeue(queue);
+	// dequeue(queue);
 	
 	// Freeing the memory allocated on heap by new
 	destroy(queue);
