@@ -1,0 +1,6 @@
+<map id="push" name="push">
+<area shape="rect" id="node1" title="Adds a new data to the provided stack." alt="" coords="5,56,56,83"/>
+<area shape="rect" id="node2" href="$node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list." alt="" coords="104,5,168,32"/>
+<area shape="rect" id="node3" href="$node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3" title="Inserts new data at specified index given the index already exists in provided list." alt="" coords="109,56,163,83"/>
+<area shape="rect" id="node4" href="$node_8h.html#a63f364995f90d701e48325faa632d1c1" title="Returns the size of provided list." alt="" coords="113,107,159,133"/>
+</map>
