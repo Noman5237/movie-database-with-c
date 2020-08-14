@@ -7,8 +7,10 @@
 
 int main() {
 	
+	// TODO front and back
+	
 	// Initializing a new queue; allocated on heap
-	Queue *queue = new();
+	Queue *queue = init();
 	
 	// Enqueuing data into queue
 	enqueue(queue, 1);
@@ -18,18 +20,21 @@ int main() {
 	// Getting queue size
 	printf("Queue Size: %d\n", size(queue));
 	
+	// Getting the earliest enqueued data
+	printf("Front of Queue: %d\n", front(queue));
+	
+	// Getting the latest enqueued data
+	printf("Back of Queue: %d\n", back(queue));
+	
 	// Traversing queue
 	traverse(queue);
-	printf("\n");
 	
 	// De-queuing data from queue
 	dequeue(queue);
 	traverse(queue);
-	printf("\n");
 	
 	dequeue(queue);
 	traverse(queue);
-	printf("\n");
 	
 	dequeue(queue);
 	
@@ -40,7 +45,7 @@ int main() {
 	dequeue(queue);
 	
 	// Freeing the memory allocated on heap by new
-	delete(queue);
+	destroy(queue);
 	
 	return 0;
 }

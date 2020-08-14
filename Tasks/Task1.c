@@ -9,7 +9,7 @@
 int main() {
 	
 	// Initializing a new stack; allocated on heap
-	Stack *stack = new();
+	Stack *stack = init();
 	
 	// Pushing Data into stack
 	push(stack, 1);
@@ -34,11 +34,11 @@ int main() {
 	// Stack is now empty
 	printf("Stack %s empty.\n", empty(stack) ? "is": "is not");
 	
-	// Popping from an empty stack exits with error in strict mode
+	// Popping from an empty stack
 	pop(stack);
 	
 	// Freeing the memory allocated on heap by new
-	delete(stack);
+	destroy(stack);
 	
 	return 0;
 }
