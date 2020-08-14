@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['instructions_24',['Instructions',['../_c_make.html',1,'']]],
   ['index_5fout_5fof_5fbounds_25',['INDEX_OUT_OF_BOUNDS',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604',1,'exception.h']]],
   ['init_26',['init',['../node_8h.html#a668f7f55e752c951af12c0819d18c4e3',1,'init():&#160;node.c'],['../node_8c.html#a668f7f55e752c951af12c0819d18c4e3',1,'init():&#160;node.c']]],
   ['insert_27',['insert',['../node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3',1,'insert(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a92feac916df4ee4e8bc4f05a96d0f0f3',1,'insert(LinkedList *ll, int index, node_t newData):&#160;node.c']]],

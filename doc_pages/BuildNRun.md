@@ -1,5 +1,5 @@
 
-@page CMake Instructions
+@page subsystem1 CMake Instructions
 
 @section subsystemsection1 Cmake Setup
 ### Debug Build

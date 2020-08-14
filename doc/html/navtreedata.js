@@ -26,10 +26,10 @@ var NAVTREE =
 [
   [ "Linked List", "index.html", [
     [ "Documentation of Linked List, Stack and Queue", "index.html", null ],
-    [ "Instructions", "_c_make.html", [
-      [ "Cmake Setup", "_c_make.html#subsystemsection1", null ],
-      [ "Build Targets/Executables", "_c_make.html#subsystemsection2", null ],
-      [ "Run Targets/Executables", "_c_make.html#subsystemsection3", null ]
+    [ "CMake Instructions", "subsystem1.html", [
+      [ "Cmake Setup", "subsystem1.html#subsystemsection1", null ],
+      [ "Build Targets/Executables", "subsystem1.html#subsystemsection2", null ],
+      [ "Run Targets/Executables", "subsystem1.html#subsystemsection3", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -55,7 +55,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_c_make.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
