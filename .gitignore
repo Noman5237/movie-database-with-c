@@ -3,3 +3,5 @@ cmake-build-*/
 out/
 lib/build/
 .idea/
+lib/googletest
+doc/
