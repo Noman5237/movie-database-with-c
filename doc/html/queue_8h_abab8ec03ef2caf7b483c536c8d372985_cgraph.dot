@@ -6,5 +6,5 @@ digraph "dequeue"
   rankdir="LR";
   Node1 [label="dequeue",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Erases the earliest available enqueued data of the provided queue."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="erase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0",tooltip="Erases the element of the list specified by index."];
+  Node2 [label="ll_erase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0",tooltip="Erases the element of the list specified by index."];
 }

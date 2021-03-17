@@ -12,10 +12,10 @@
 /* ============================== CONSTRUCTOR ========================= */
 
 
-LinkedList *init() {
+LinkedList *ll_init() {
 	LinkedList *ll = (LinkedList *) malloc(sizeof(LinkedList));
 	if (!ll) {
-		return EXCEPTION_NEW(OUT_OF_MEMORY), (LinkedList *)NULL;
+		return EXCEPTION_NEW(OUT_OF_MEMORY), (LinkedList *) NULL;
 	}
 	
 	ll->_size = 0;
@@ -28,7 +28,7 @@ LinkedList *init() {
 /* ============================== ACCESSOR ========================= */
 
 
-node_t get(LinkedList *ll, int index) {
+node_t ll_get(LinkedList *ll, int index) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -61,7 +61,7 @@ node_t get(LinkedList *ll, int index) {
 }
 
 
-int forEach(LinkedList *ll, int (*callback)(int)) {
+int ll_forEach(LinkedList *ll, int (*callback)(node_t)) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -80,7 +80,7 @@ int forEach(LinkedList *ll, int (*callback)(int)) {
 /* ============================== CAPACITY ========================= */
 
 
-int size(LinkedList *ll) {
+int ll_size(LinkedList *ll) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER), -1;
 	}
@@ -89,7 +89,7 @@ int size(LinkedList *ll) {
 }
 
 
-int empty(LinkedList *ll) {
+int ll_empty(LinkedList *ll) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -101,7 +101,7 @@ int empty(LinkedList *ll) {
 /* ============================== MODIFIERS ========================= */
 
 
-int append(LinkedList *ll, node_t newData) {
+int ll_append(LinkedList *ll, node_t newData) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -141,7 +141,7 @@ int append(LinkedList *ll, node_t newData) {
 }
 
 
-int insert(LinkedList *ll, int index, node_t newData) {
+int ll_insert(LinkedList *ll, int index, node_t newData) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -202,7 +202,7 @@ int insert(LinkedList *ll, int index, node_t newData) {
 }
 
 
-int erase(LinkedList *ll, int index) {
+int ll_erase(LinkedList *ll, int index) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -248,7 +248,7 @@ int erase(LinkedList *ll, int index) {
 }
 
 
-int set(LinkedList *ll, int index, node_t newData) {
+int ll_set(LinkedList *ll, int index, node_t newData) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -285,7 +285,7 @@ int set(LinkedList *ll, int index, node_t newData) {
 /* ============================== DESTRUCTOR ========================= */
 
 
-int destroy(LinkedList *ll) {
+int ll_destroy(LinkedList *ll) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -307,20 +307,13 @@ int destroy(LinkedList *ll) {
 /* ============================== UTILITY ========================= */
 
 
-int traverse(LinkedList *ll) {
+int ll_traverse(LinkedList *ll) {
 	if (!ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
-	forEach(ll, printer);
+	ll_forEach(ll, printer);
 	printf("\n");
 	
 	return 0;
 }
-
-
-int printer(node_t data) {
-	printf("%d ", data);
-	return 0;
-}
-

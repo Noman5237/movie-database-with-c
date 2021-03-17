@@ -22,37 +22,32 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/out/${CMAKE_SYSTE
 
 # ================================================== LIBRARY ================================================== #
 
-# ---------------- Data Structure ---------------- #
-add_library(dtstrct SHARED
-            lib/src/DataStruct/node.c
-            lib/src/DataStruct/stack.c
-            lib/src/DataStruct/queue.c)
-
+# ---------------- Exception---------------- #
 add_library(excpt SHARED
             lib/src/exception.c)
 
-target_link_libraries(dtstrct excpt)
+# ---------------- Movie ---------------- #
+add_library(movie SHARED
+            lib/src/movie.c)
+
+target_link_libraries(movie excpt)
+# ---------------- Data Structure ---------------- #
+add_library(dtstrct SHARED
+            lib/src/DataStruct/node.c)
+
+target_link_libraries(dtstrct movie)
 
 # ================================================== EXECUTABLE ================================================== #
 
 # ---------------- Tasks ---------------- #
 
-add_executable(Task1 Tasks/Task1.c)
-add_executable(Task2 Tasks/Task2.c)
-
-target_link_libraries(Task1 dtstrct)
-target_link_libraries(Task2 dtstrct)
+add_executable(MovieDatabase Tasks/MovieDatabase.c)
+target_link_libraries(MovieDatabase dtstrct)
 
 # ---------------- Tests ---------------- #
 
-add_executable(LLTest Tests/Test_LinkedList.cpp)
-target_link_libraries(LLTest gtest gtest_main)
-
-add_executable(StackTest Tests/Test_Stack.cpp)
-target_link_libraries(StackTest gtest gtest_main)
-
-add_executable(QueueTest Tests/Test_Queue.cpp)
-target_link_libraries(QueueTest gtest gtest_main)
+#add_executable(LLTest Tests/Test_LinkedList.cpp)
+#target_link_libraries(LLTest gtest gtest_main)
 
 # ================================================== MESSAGES ================================================== #
 

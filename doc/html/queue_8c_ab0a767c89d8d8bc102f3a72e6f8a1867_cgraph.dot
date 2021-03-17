@@ -6,5 +6,5 @@ digraph "enqueue"
   rankdir="LR";
   Node1 [label="enqueue",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Adds a new data to the provided queue."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="append",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce",tooltip="Adds new data to the end of the provided list."];
+  Node2 [label="ll_append",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce",tooltip="Adds new data to the end of the provided list."];
 }

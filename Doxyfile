@@ -70,7 +70,7 @@ OUTPUT_DIRECTORY       = doc
 
 CREATE_SUBDIRS         = NO
 
-# If the ALLOW_UNICODE_NAMES tag is set to YES, doxygen will allow non-ASCII
+# If the ALLOW_UNICODE_NAMES tag is ll_set to YES, doxygen will allow non-ASCII
 # characters to appear in the names of generated files. If set to NO, non-ASCII
 # characters will be escaped, for example _xE3_x81_x84 will be used for Unicode
 # U+3044.
@@ -1366,7 +1366,7 @@ DOCSET_FEEDNAME        = "Doxygen generated docs"
 
 # This tag specifies a string that should uniquely identify the documentation
 # set bundle. This should be a reverse domain-name style string, e.g.
-# com.mycompany.MyDocSet. Doxygen will append .docset to the name.
+# com.mycompany.MyDocSet. Doxygen will ll_append .docset to the name.
 # The default value is: org.doxygen.Project.
 # This tag requires that the tag GENERATE_DOCSET is set to YES.
 
@@ -2310,9 +2310,9 @@ EXTERNAL_PAGES         = YES
 CLASS_DIAGRAMS         = NO
 
 # You can include diagrams made with dia in doxygen documentation. Doxygen will
-# then run dia to produce the diagram and insert it in the documentation. The
+# then run dia to produce the diagram and ll_insert it in the documentation. The
 # DIA_PATH tag allows you to specify the directory where the dia binary resides.
-# If left empty dia is assumed to be found in the default search path.
+# If left ll_empty dia is assumed to be found in the default search path.
 
 DIA_PATH               =
 
@@ -2334,7 +2334,7 @@ HAVE_DOT               = YES
 # The DOT_NUM_THREADS specifies the number of dot invocations doxygen is allowed
 # to run in parallel. When set to 0 doxygen will base this on the number of
 # processors available in the system. You can set it explicitly to a value
-# larger than 0 to get control over the balance between CPU load and processing
+# larger than 0 to ll_get control over the balance between CPU load and processing
 # speed.
 # Minimum value: 0, maximum value: 32, default value: 0.
 # This tag requires that the tag HAVE_DOT is set to YES.
@@ -2563,7 +2563,7 @@ DOT_GRAPH_MAX_NODES    = 50
 # root by following a path via at most 3 edges will be shown. Nodes that lay
 # further from the root node will be omitted. Note that setting this option to 1
 # or 2 may greatly reduce the computation time needed for large code bases. Also
-# note that the size of a graph can be further restricted by
+# note that the ll_size of a graph can be further restricted by
 # DOT_GRAPH_MAX_NODES. Using a depth of 0 means no depth restriction.
 # Minimum value: 0, maximum value: 1000, default value: 0.
 # This tag requires that the tag HAVE_DOT is set to YES.

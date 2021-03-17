@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <exception.h>
-
+#include <movie.h>
 
 /**
  * Linked List Nodes contains data which are of by default integer types.
@@ -25,7 +25,7 @@
  * Creating a separate node type was initiated keeping in mind of extending
  * it to generic type in future.
  */
-typedef int node_t;
+typedef Movie *node_t;
 
 
 /**
@@ -64,7 +64,7 @@ typedef struct Node {
  * +-------------------------------------------------------+
  * |                                                       |
  * | +-----------------+                                   |
- * | |size       | 4   |    Doubly Circular Linked List    |
+ * | |ll_size       | 4   |    Doubly Circular Linked List    |
  * | +-----------------+                                   |
  * | +---------------------------------------------------+ |
  * | |                                                   | |
@@ -85,13 +85,13 @@ typedef struct Node {
  *
  * @note
  * Instead of declaring pointer to pointer to Node Head as Linked List,
- * Linked List is a specially designed object with size and node head pointer
+ * Linked List is a specially designed object with ll_size and node head pointer
  * because of extensibility, flexibility and its similarity to unanimous one dimensional
  * dynamic storage data structures.
- * The structure contains size variable for optimization purposes.
+ * The structure contains ll_size variable for optimization purposes.
  *
  * @attention
- * Do not modify the size of head of the Linked List unless you know what you doing and
+ * Do not modify the ll_size of head of the Linked List unless you know what you doing and
  * are solely responsible for unwanted and weird behaviour of your programs.
  *
  * @warning
@@ -99,7 +99,7 @@ typedef struct Node {
  * is not intended and the supplied software is not responsible for any
  * fatal or non crashes and unwanted and weird behaviour of the user programs.
  *
- * @see Node init() append()
+ * @see Node ll_init() ll_append()
  */
 typedef struct LinkedList {
 	int _size;
@@ -112,13 +112,13 @@ typedef struct LinkedList {
 
 
 /**
- * Creates a new empty **Doubly Circular Linked List**
+ * Creates a new ll_empty **Doubly Circular Linked List**
  * on heap and returns a pointer to the instantiated object.
  *
  * @throws OUT_OF_MEMORY if allocation is not possible for new list.
  *
  * @return
- * Pointer to new empty **Doubly Circular Linked List** if successful,
+ * Pointer to new ll_empty **Doubly Circular Linked List** if successful,
  * otherwise returns NULL if exception handler is not brutal.
  *
  * <p>
@@ -129,8 +129,8 @@ typedef struct LinkedList {
  * But it interfered with Tests run in C++ using GoogleTest
  *
  * @attention
- * It is recommended to use init() function to create a new linked list
- * and use destroy() function to delete/free the allocated linked list
+ * It is recommended to use ll_init() function to create a new linked list
+ * and use ll_destroy() function to delete/free the allocated linked list
  * unless you know what you are doing and also fully responsible for your actions.
  *
  * #### Example
@@ -139,15 +139,15 @@ typedef struct LinkedList {
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -159,9 +159,9 @@ typedef struct LinkedList {
  *
  * ~~~
  *
- * @see append() destroy()
+ * @see ll_append() ll_destroy()
  */
-LinkedList *init();
+LinkedList *ll_init();
 
 
 /* ============================== ACCESSOR ========================= */
@@ -172,12 +172,12 @@ LinkedList *init();
  *
  * <p>
  * Indexing starts from 0.
- * **get** also supports reverse order indexes.
+ * **ll_get** also supports reverse order indexes.
  * <br>
  * So -1 as index value will return the data of the last element of the list,
  * and so will -2 return the data of the second last element of the list.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  * @param index Index of the desired data to look up
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
@@ -195,18 +195,18 @@ LinkedList *init();
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
- * 	append(ll, 637);
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
+ * 	ll_append(ll, 637);
  * 	// Printing the data of 2nd element
- * 	printf("2nd element: %d\n", get(ll, 1));
+ * 	printf("2nd element: %d\n", ll_get(ll, 1));
  * 	// Printing the data of the last element
- * 	printf("Last element: %d\n", get(ll, -1));
+ * 	printf("Last element: %d\n", ll_get(ll, -1));
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -219,17 +219,17 @@ LinkedList *init();
  *
  * ~~~
  *
- * @see set() init() append() destroy() printer()
+ * @see ll_set() ll_init() ll_append() ll_destroy() printer()
  */
-node_t get(LinkedList *ll, int index);
+node_t ll_get(LinkedList *ll, int index);
 
 
 /**
  * Given the linked list pointer and callback function,
- * forEach function calls the callback function passing
+ * ll_forEach function calls the callback function passing
  * each element of the list sequentially.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  * @param callback Callback function that takes the supplied data
  * and returns Zero(0) on successful execution
  *
@@ -240,7 +240,7 @@ node_t get(LinkedList *ll, int index);
  * Zero(0) if every callback function executes successfully.
  *
  * <p>
- * **Complexity** O(*size*)
+ * **Complexity** O(*ll_size*)
  *
  * @note
  * Initially this function was named foreach.
@@ -254,27 +254,27 @@ node_t get(LinkedList *ll, int index);
  * LinkedList *ll, *sq;
  *
  * int square(int a) {
- * 	append(sq, a * a);
+ * 	ll_append(sq, a * a);
  * 	return 0;
  * }
  *
  * int main() {
  *
  * 	// Initializing ll and sq
- * 	ll = init();
- * 	sq = init();
+ * 	ll = ll_init();
+ * 	sq = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 5);
- * 	append(ll, 2);
- * 	append(ll, 3);
- * 	append(ll, 7);
- * 	// forEach demo
- * 	forEach(ll, square);
+ * 	ll_append(ll, 5);
+ * 	ll_append(ll, 2);
+ * 	ll_append(ll, 3);
+ * 	ll_append(ll, 7);
+ * 	// ll_forEach demo
+ * 	ll_forEach(ll, square);
  * 	// Traversing ll and sq
- * 	traverse(ll);
- * 	traverse(sq);
+ * 	ll_traverse(ll);
+ * 	ll_traverse(sq);
  * 	// Destroying ll and sq
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -287,18 +287,18 @@ node_t get(LinkedList *ll, int index);
  *
  * ~~~
  *
- * @see append() destroy() traverse()
+ * @see ll_append() ll_destroy() ll_traverse()
  */
-int forEach(LinkedList *ll, int (*callback)(int));
+int ll_forEach(LinkedList *ll, int (*callback)(node_t));
 
 
 /* ============================== CAPACITY ========================= */
 
 
 /**
- * Returns the size of provided list.
+ * Returns the ll_size of provided list.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
@@ -315,16 +315,16 @@ int forEach(LinkedList *ll, int (*callback)(int));
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
- * 	append(ll, 637);
- * 	// Printing the size of ll
- * 	printf("Size of ll: %d\n", size(ll));
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
+ * 	ll_append(ll, 637);
+ * 	// Printing the ll_size of ll
+ * 	printf("Size of ll: %d\n", ll_size(ll));
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -336,20 +336,20 @@ int forEach(LinkedList *ll, int (*callback)(int));
  *
  * ~~~
  *
- * @see empty() init() append()
+ * @see ll_empty() ll_init() ll_append()
  */
-int size(LinkedList *ll);
+int ll_size(LinkedList *ll);
 
 
 /**
- * Checks whether the provided list is empty.
+ * Checks whether the provided list is ll_empty.
  *
- * @param ll Pointer to the list instantiated by init()
+ * @param ll Pointer to the list instantiated by ll_init()
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
  * @return
- * True(1) if size of provided list is Zero(0),
+ * True(1) if ll_size of provided list is Zero(0),
  * otherwise returns False(0).
  *
  * <p>
@@ -361,22 +361,22 @@ int size(LinkedList *ll);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
- * 	append(ll, 637);
- * 	// Check whether ll is empty which is certainly not
- * 	printf("ll %s empty.\n", empty(ll) ? "is", "is not");
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
+ * 	ll_append(ll, 637);
+ * 	// Check whether ll is ll_empty which is certainly not
+ * 	printf("ll %s ll_empty.\n", ll_empty(ll) ? "is", "is not");
  * 	// Erasing elements from ll
- * 	erase(ll, -1);
- * 	erase(ll, -1);
- * 	erase(ll, -1);
- * 	// Check whether ll is empty which is certainly not
- * 	printf("ll %s empty.\n", empty(ll) ? "is", "is not");
+ * 	ll_erase(ll, -1);
+ * 	ll_erase(ll, -1);
+ * 	ll_erase(ll, -1);
+ * 	// Check whether ll is ll_empty which is certainly not
+ * 	printf("ll %s ll_empty.\n", ll_empty(ll) ? "is", "is not");
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -384,14 +384,14 @@ int size(LinkedList *ll);
  *
  * #### Output
  * ~~~
- * ll is not empty.
- * ll is empty.
+ * ll is not ll_empty.
+ * ll is ll_empty.
  *
  * ~~~
  *
- * @see LinkedList size() append() erase()
+ * @see LinkedList ll_size() ll_append() ll_erase()
  */
-int empty(LinkedList *ll);
+int ll_empty(LinkedList *ll);
 
 
 /* ============================== MODIFIERS ========================= */
@@ -400,7 +400,7 @@ int empty(LinkedList *ll);
 /**
  * Adds new data to the end of the provided list.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  * @param newData New data to be appended at the end of the list
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
@@ -418,15 +418,15 @@ int empty(LinkedList *ll);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -438,9 +438,9 @@ int empty(LinkedList *ll);
  *
  * ~~~
  *
- * @see init() destroy()
+ * @see ll_init() ll_destroy()
  */
-int append(LinkedList *ll, node_t newData);
+int ll_append(LinkedList *ll, node_t newData);
 
 
 /**
@@ -448,13 +448,13 @@ int append(LinkedList *ll, node_t newData);
  *
  * <p>
  * Indexing starts from 0.
- * **insert** also supports reverse order indexes.
+ * **ll_insert** also supports reverse order indexes.
  * <br>
- * So -1 as index value will insert the new data in the last position of the list,
- * and so will -2 return insert the new data in the second last position of the list.
+ * So -1 as index value will ll_insert the new data in the last position of the list,
+ * and so will -2 return ll_insert the new data in the second last position of the list.
  *
- * @param ll Pointer to the linked list instantiated by init()
- * @param index Existing index for the new data to insert at
+ * @param ll Pointer to the linked list instantiated by ll_init()
+ * @param index Existing index for the new data to ll_insert at
  * @param newData Data to be inserted at desired index of the list
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
@@ -468,16 +468,16 @@ int append(LinkedList *ll, node_t newData);
  * **Complexity** O(|*index*|)
  *
  * @attention
- * insert cannot create position that doesn't exist!!!
+ * ll_insert cannot create position that doesn't exist!!!
  * <br>
- * For example you cannot insert new data at the beginning of the list
- * when the size of the list is 0. For that you must use append().
+ * For example you cannot ll_insert new data at the beginning of the list
+ * when the ll_size of the list is 0. For that you must use ll_append().
  * <br>
- * And also if the size of a list is 3, you cannot insert at -4 to change the head,
- * because -4 doesn't exist yet. In this case you can insert at 0, which will help you achieve
+ * And also if the ll_size of a list is 3, you cannot ll_insert at -4 to change the head,
+ * because -4 doesn't exist yet. In this case you can ll_insert at 0, which will help you achieve
  * your desired result.
  * <br>
- * *Just remember, insert cannot be used into non-existing index and
+ * *Just remember, ll_insert cannot be used into non-existing index and
  * the newly inserted data will always hold the given index in the modified list.*
  *
  * #### Example
@@ -486,21 +486,21 @@ int append(LinkedList *ll, node_t newData);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 2);
- * 	append(ll, 7);
+ * 	ll_append(ll, 2);
+ * 	ll_append(ll, 7);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Inserting new data at the head
- * 	insert(ll, 0, 5);
+ * 	ll_insert(ll, 0, 5);
  * 	// Inserting new data at index -2
- * 	insert(ll, -2, 3);
+ * 	ll_insert(ll, -2, 3);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -513,9 +513,9 @@ int append(LinkedList *ll, node_t newData);
  *
  * ~~~
  *
- * @see erase() append()
+ * @see ll_erase() ll_append()
  */
-int insert(LinkedList *ll, int index, node_t newData);
+int ll_insert(LinkedList *ll, int index, node_t newData);
 
 
 /**
@@ -523,16 +523,16 @@ int insert(LinkedList *ll, int index, node_t newData);
  *
  * <p>
  * Indexing starts from 0.
- * **erase** also supports reverse order indexes.
+ * **ll_erase** also supports reverse order indexes.
  * <br>
- * So -1 as index value will erase the last element of the list,
- * and so will -2 erase the second last element of the list.
+ * So -1 as index value will ll_erase the last element of the list,
+ * and so will -2 ll_erase the second last element of the list.
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  * @throws INDEX_OUT_OF_BOUND if **index** is invalid in the perspective of **ll**.
  *
- * @param ll Pointer to the linked list instantiated by init()
- * @param index Index of the element to erase
+ * @param ll Pointer to the linked list instantiated by ll_init()
+ * @param index Index of the element to ll_erase
  *
  * @return
  * Zero(0) if successful.
@@ -546,25 +546,25 @@ int insert(LinkedList *ll, int index, node_t newData);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 5);
- * 	append(ll, 2);
- * 	append(ll, 3);
- * 	append(ll, 7);
- * 	insert(ll, -3, 6);
- * 	append(ll, 8);
+ * 	ll_append(ll, 5);
+ * 	ll_append(ll, 2);
+ * 	ll_append(ll, 3);
+ * 	ll_append(ll, 7);
+ * 	ll_insert(ll, -3, 6);
+ * 	ll_append(ll, 8);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Erasing some elements
- * 	erase(ll, 0);
- * 	erase(ll, 1);
- * 	erase(ll, -1);
+ * 	ll_erase(ll, 0);
+ * 	ll_erase(ll, 1);
+ * 	ll_erase(ll, -1);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -577,9 +577,9 @@ int insert(LinkedList *ll, int index, node_t newData);
  *
  * ~~~
  *
- * @see insert() append()
+ * @see ll_insert() ll_append()
  */
-int erase(LinkedList *ll, int index);
+int ll_erase(LinkedList *ll, int index);
 
 
 /**
@@ -589,10 +589,10 @@ int erase(LinkedList *ll, int index);
  * Indexing starts from 0.
  * Get function also supports reverse order indexes.
  * <br>
- * So -1 as index value will set the data of the last element of the list,
- * and so will -2 set the data of the second last element of the list.
+ * So -1 as index value will ll_set the data of the last element of the list,
+ * and so will -2 ll_set the data of the second last element of the list.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  * @param index Index of the desired data to modify
  * @param newData Value of the new data for desired indexed element in list
  *
@@ -610,15 +610,15 @@ int erase(LinkedList *ll, int index);
  * #include<DataStruct/node.h>
  *
  * int main() {
- * 	LinkedList *ll = init();
- * 	append(ll, 52);
- * 	append(ll, 37);
+ * 	LinkedList *ll = ll_init();
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
  *
- * 	printf("Previous data last element: %d\n", get(ll, -1));
- * 	set(ll, 1, 637);
- * 	printf("Modified data last element: %d\n", get(ll, 1));
+ * 	printf("Previous data last element: %d\n", ll_get(ll, -1));
+ * 	ll_set(ll, 1, 637);
+ * 	printf("Modified data last element: %d\n", ll_get(ll, 1));
  *
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -631,18 +631,18 @@ int erase(LinkedList *ll, int index);
  *
  * ~~~
  *
- * @see get() init() append() destroy()
+ * @see ll_get() ll_init() ll_append() ll_destroy()
  */
-int set(LinkedList *ll, int index, node_t newData);
+int ll_set(LinkedList *ll, int index, node_t newData);
 
 
 /* ============================== DESTRUCTOR ========================= */
 
 
 /**
- * Free the memory occupied by the provided list that was allocated on heap by init().
+ * Free the memory occupied by the provided list that was allocated on heap by ll_init().
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
@@ -651,15 +651,15 @@ int set(LinkedList *ll, int index, node_t newData);
  * along with its rest of its elements.
  *
  * <p>
- * **Complexity** O(*size*)
+ * **Complexity** O(*ll_size*)
  *
  * @note
  * Initially this function was named delete.
  * But it interfered with Tests run in C++ using GoogleTest
  *
  * @attention
- * It is recommended to use init() function to create a new linked list
- * and use destroy() function to delete/free the allocated linked list
+ * It is recommended to use ll_init() function to create a new linked list
+ * and use ll_destroy() function to delete/free the allocated linked list
  * unless you know what you are doing and also fully responsible for your actions.
  *
  * #### Example
@@ -668,15 +668,15 @@ int set(LinkedList *ll, int index, node_t newData);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -688,9 +688,9 @@ int set(LinkedList *ll, int index, node_t newData);
  *
  * ~~~
  *
- * @see init() append()
+ * @see ll_init() ll_append()
  */
-int destroy(LinkedList *ll);
+int ll_destroy(LinkedList *ll);
 
 
 /* ============================== UTILITY ========================= */
@@ -700,12 +700,12 @@ int destroy(LinkedList *ll);
  * Prints all the elements of the provided linked list separated by space which ends with newline.
  *
  * <p>
- * traverse is a minimal utility function to print the elements of the list.
- * It is implemented using forEach() and another utility function printer().
- * It is recommended that users should make their own traverse function
+ * ll_traverse is a minimal utility function to print the elements of the list.
+ * It is implemented using ll_forEach() and another utility function printer().
+ * It is recommended that users should make their own ll_traverse function
  * for customization and flexibility.
  *
- * @param ll Pointer to the linked list instantiated by init()
+ * @param ll Pointer to the linked list instantiated by ll_init()
  *
  * @throws INVALID_POINTER if **ll** is either NULL, uninitialized or unaddressable.
  *
@@ -713,10 +713,10 @@ int destroy(LinkedList *ll);
  * Zero(0) if linked list **ll** was successfully traversed.
  *
  * <p>
- * **Complexity** O(*size*)
+ * **Complexity** O(*ll_size*)
  *
  * @note
- * There was no intention of creating traverse.
+ * There was no intention of creating ll_traverse.
  * But its useful in some way for someone.
  *
  * #### Example
@@ -725,15 +725,15 @@ int destroy(LinkedList *ll);
  *
  * int main() {
  *
- * 	// Initializing an empty doubly circular linked list
- * 	LinkedList *ll = init();
+ * 	// Initializing an ll_empty doubly circular linked list
+ * 	LinkedList *ll = ll_init();
  * 	// Appending data to ll
- * 	append(ll, 52);
- * 	append(ll, 37);
+ * 	ll_append(ll, 52);
+ * 	ll_append(ll, 37);
  * 	// Printing all the elements of ll
- * 	traverse(ll);
+ * 	ll_traverse(ll);
  * 	// Destroying ll
- * 	destroy(ll);
+ * 	ll_destroy(ll);
  *
  * 	return 0;
  * }
@@ -745,16 +745,16 @@ int destroy(LinkedList *ll);
  *
  * ~~~
  *
- * @see printer() forEach()
+ * @see printer() ll_forEach()
  */
-int traverse(LinkedList *ll);
+int ll_traverse(LinkedList *ll);
 
 
 /**
  * Prints out the data supplied to the default output stream with a trailing whitespace.
  *
  * <p>
- * printer is a minimal callback function for traverse function.
+ * printer is a minimal callback function for ll_traverse function.
  *
  * @param data Data to be printed to the default output stream
  * It is recommended that users should make their own printer function
@@ -766,7 +766,7 @@ int traverse(LinkedList *ll);
  * <p>
  * **Complexity** O(1)
  *
- * @see traverse()
+ * @see ll_traverse()
  */
 int printer(node_t data);
 

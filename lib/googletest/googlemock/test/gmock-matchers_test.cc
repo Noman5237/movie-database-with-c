@@ -410,7 +410,7 @@ TEST(StringMatcherTest,
 // MatcherInterface* without requiring the user to explicitly
 // write the type.
 TEST(MakeMatcherTest, ConstructsMatcherFromMatcherInterface) {
-  const MatcherInterface<int>* dummy_impl = nullptr;
+  const MatcherInterface<int>* dummy_impl = new EvenMatcherImpl;
   Matcher<int> m = MakeMatcher(dummy_impl);
 }
 
@@ -1074,7 +1074,12 @@ struct MoveHelper {
   MOCK_METHOD1(Call, void(MoveOnly));
 };
 
+// Disable this test in VS 2015 (version 14), where it fails when SEH is enabled
+#if defined(_MSC_VER) && (_MSC_VER < 1910)
+TEST(ComparisonBaseTest, DISABLED_WorksWithMoveOnly) {
+#else
 TEST(ComparisonBaseTest, WorksWithMoveOnly) {
+#endif
   MoveOnly m{0};
   MoveHelper helper;
 
@@ -1642,6 +1647,147 @@ TEST(PairTest, InsideContainsUsingMap) {
   EXPECT_THAT(container, Contains(Pair(_, 'a')));
   EXPECT_THAT(container, Not(Contains(Pair(3, _))));
 }
+
+TEST(FieldsAreTest, MatchesCorrectly) {
+  std::tuple<int, std::string, double> p(25, "foo", .5);
+
+  // All fields match.
+  EXPECT_THAT(p, FieldsAre(25, "foo", .5));
+  EXPECT_THAT(p, FieldsAre(Ge(20), HasSubstr("o"), DoubleEq(.5)));
+
+  // Some don't match.
+  EXPECT_THAT(p, Not(FieldsAre(26, "foo", .5)));
+  EXPECT_THAT(p, Not(FieldsAre(25, "fo", .5)));
+  EXPECT_THAT(p, Not(FieldsAre(25, "foo", .6)));
+}
+
+TEST(FieldsAreTest, CanDescribeSelf) {
+  Matcher<const pair<std::string, int>&> m1 = FieldsAre("foo", 42);
+  EXPECT_EQ(
+      "has field #0 that is equal to \"foo\""
+      ", and has field #1 that is equal to 42",
+      Describe(m1));
+  EXPECT_EQ(
+      "has field #0 that isn't equal to \"foo\""
+      ", or has field #1 that isn't equal to 42",
+      DescribeNegation(m1));
+}
+
+TEST(FieldsAreTest, CanExplainMatchResultTo) {
+  // The first one that fails is the one that gives the error.
+  Matcher<std::tuple<int, int, int>> m =
+      FieldsAre(GreaterThan(0), GreaterThan(0), GreaterThan(0));
+
+  EXPECT_EQ("whose field #0 does not match, which is 1 less than 0",
+            Explain(m, std::make_tuple(-1, -2, -3)));
+  EXPECT_EQ("whose field #1 does not match, which is 2 less than 0",
+            Explain(m, std::make_tuple(1, -2, -3)));
+  EXPECT_EQ("whose field #2 does not match, which is 3 less than 0",
+            Explain(m, std::make_tuple(1, 2, -3)));
+
+  // If they all match, we get a long explanation of success.
+  EXPECT_EQ(
+      "whose all elements match, "
+      "where field #0 is a value which is 1 more than 0"
+      ", and field #1 is a value which is 2 more than 0"
+      ", and field #2 is a value which is 3 more than 0",
+      Explain(m, std::make_tuple(1, 2, 3)));
+
+  // Only print those that have an explanation.
+  m = FieldsAre(GreaterThan(0), 0, GreaterThan(0));
+  EXPECT_EQ(
+      "whose all elements match, "
+      "where field #0 is a value which is 1 more than 0"
+      ", and field #2 is a value which is 3 more than 0",
+      Explain(m, std::make_tuple(1, 0, 3)));
+
+  // If only one has an explanation, then print that one.
+  m = FieldsAre(0, GreaterThan(0), 0);
+  EXPECT_EQ(
+      "whose all elements match, "
+      "where field #1 is a value which is 1 more than 0",
+      Explain(m, std::make_tuple(0, 1, 0)));
+}
+
+#if defined(__cpp_structured_bindings) && __cpp_structured_bindings >= 201606
+TEST(FieldsAreTest, StructuredBindings) {
+  // testing::FieldsAre can also match aggregates and such with C++17 and up.
+  struct MyType {
+    int i;
+    std::string str;
+  };
+  EXPECT_THAT((MyType{17, "foo"}), FieldsAre(Eq(17), HasSubstr("oo")));
+
+  // Test all the supported arities.
+  struct MyVarType1 {
+    int a;
+  };
+  EXPECT_THAT(MyVarType1{}, FieldsAre(0));
+  struct MyVarType2 {
+    int a, b;
+  };
+  EXPECT_THAT(MyVarType2{}, FieldsAre(0, 0));
+  struct MyVarType3 {
+    int a, b, c;
+  };
+  EXPECT_THAT(MyVarType3{}, FieldsAre(0, 0, 0));
+  struct MyVarType4 {
+    int a, b, c, d;
+  };
+  EXPECT_THAT(MyVarType4{}, FieldsAre(0, 0, 0, 0));
+  struct MyVarType5 {
+    int a, b, c, d, e;
+  };
+  EXPECT_THAT(MyVarType5{}, FieldsAre(0, 0, 0, 0, 0));
+  struct MyVarType6 {
+    int a, b, c, d, e, f;
+  };
+  EXPECT_THAT(MyVarType6{}, FieldsAre(0, 0, 0, 0, 0, 0));
+  struct MyVarType7 {
+    int a, b, c, d, e, f, g;
+  };
+  EXPECT_THAT(MyVarType7{}, FieldsAre(0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType8 {
+    int a, b, c, d, e, f, g, h;
+  };
+  EXPECT_THAT(MyVarType8{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType9 {
+    int a, b, c, d, e, f, g, h, i;
+  };
+  EXPECT_THAT(MyVarType9{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType10 {
+    int a, b, c, d, e, f, g, h, i, j;
+  };
+  EXPECT_THAT(MyVarType10{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType11 {
+    int a, b, c, d, e, f, g, h, i, j, k;
+  };
+  EXPECT_THAT(MyVarType11{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType12 {
+    int a, b, c, d, e, f, g, h, i, j, k, l;
+  };
+  EXPECT_THAT(MyVarType12{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType13 {
+    int a, b, c, d, e, f, g, h, i, j, k, l, m;
+  };
+  EXPECT_THAT(MyVarType13{}, FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType14 {
+    int a, b, c, d, e, f, g, h, i, j, k, l, m, n;
+  };
+  EXPECT_THAT(MyVarType14{},
+              FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType15 {
+    int a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
+  };
+  EXPECT_THAT(MyVarType15{},
+              FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+  struct MyVarType16 {
+    int a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p;
+  };
+  EXPECT_THAT(MyVarType16{},
+              FieldsAre(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+}
+#endif
 
 TEST(ContainsTest, WorksWithMoveOnly) {
   ContainerHelper helper;
@@ -2843,6 +2989,13 @@ TEST(TrulyTest, WorksForByRefArguments) {
   EXPECT_FALSE(m.Matches(n));
 }
 
+// Tests that Truly(predicate) provides a helpful reason when it fails.
+TEST(TrulyTest, ExplainsFailures) {
+  StringMatchResultListener listener;
+  EXPECT_FALSE(ExplainMatchResult(Truly(IsPositive), -1, &listener));
+  EXPECT_EQ(listener.str(), "didn't satisfy the given predicate");
+}
+
 // Tests that Matches(m) is a predicate satisfied by whatever that
 // matches matcher m.
 TEST(MatchesTest, IsSatisfiedByWhatMatchesTheMatcher) {
@@ -3573,6 +3726,105 @@ TEST(PointeeTest, ReferenceToNonConstRawPointer) {
   EXPECT_FALSE(m.Matches(p));
   p = nullptr;
   EXPECT_FALSE(m.Matches(p));
+}
+
+TEST(PointeeTest, SmartPointer) {
+  const Matcher<std::unique_ptr<int>> m = Pointee(Ge(0));
+
+  std::unique_ptr<int> n(new int(1));
+  EXPECT_TRUE(m.Matches(n));
+}
+
+TEST(PointeeTest, SmartPointerToConst) {
+  const Matcher<std::unique_ptr<const int>> m = Pointee(Ge(0));
+
+  // There's no implicit conversion from unique_ptr<int> to const
+  // unique_ptr<const int>, so we must pass a unique_ptr<const int> into the
+  // matcher.
+  std::unique_ptr<const int> n(new int(1));
+  EXPECT_TRUE(m.Matches(n));
+}
+
+TEST(PointerTest, RawPointer) {
+  int n = 1;
+  const Matcher<int*> m = Pointer(Eq(&n));
+
+  EXPECT_TRUE(m.Matches(&n));
+
+  int* p = nullptr;
+  EXPECT_FALSE(m.Matches(p));
+  EXPECT_FALSE(m.Matches(nullptr));
+}
+
+TEST(PointerTest, RawPointerToConst) {
+  int n = 1;
+  const Matcher<const int*> m = Pointer(Eq(&n));
+
+  EXPECT_TRUE(m.Matches(&n));
+
+  int* p = nullptr;
+  EXPECT_FALSE(m.Matches(p));
+  EXPECT_FALSE(m.Matches(nullptr));
+}
+
+TEST(PointerTest, SmartPointer) {
+  std::unique_ptr<int> n(new int(10));
+  int* raw_n = n.get();
+  const Matcher<std::unique_ptr<int>> m = Pointer(Eq(raw_n));
+
+  EXPECT_TRUE(m.Matches(n));
+}
+
+TEST(PointerTest, SmartPointerToConst) {
+  std::unique_ptr<const int> n(new int(10));
+  const int* raw_n = n.get();
+  const Matcher<std::unique_ptr<const int>> m = Pointer(Eq(raw_n));
+
+  // There's no implicit conversion from unique_ptr<int> to const
+  // unique_ptr<const int>, so we must pass a unique_ptr<const int> into the
+  // matcher.
+  std::unique_ptr<const int> p(new int(10));
+  EXPECT_FALSE(m.Matches(p));
+}
+
+TEST(AddressTest, NonConst) {
+  int n = 1;
+  const Matcher<int> m = Address(Eq(&n));
+
+  EXPECT_TRUE(m.Matches(n));
+
+  int other = 5;
+
+  EXPECT_FALSE(m.Matches(other));
+
+  int& n_ref = n;
+
+  EXPECT_TRUE(m.Matches(n_ref));
+}
+
+TEST(AddressTest, Const) {
+  const int n = 1;
+  const Matcher<int> m = Address(Eq(&n));
+
+  EXPECT_TRUE(m.Matches(n));
+
+  int other = 5;
+
+  EXPECT_FALSE(m.Matches(other));
+}
+
+TEST(AddressTest, MatcherDoesntCopy) {
+  std::unique_ptr<int> n(new int(1));
+  const Matcher<std::unique_ptr<int>> m = Address(Eq(&n));
+
+  EXPECT_TRUE(m.Matches(n));
+}
+
+TEST(AddressTest, Describe) {
+  Matcher<int> matcher = Address(_);
+  EXPECT_EQ("has address that is anything", Describe(matcher));
+  EXPECT_EQ("does not have address that is anything",
+            DescribeNegation(matcher));
 }
 
 MATCHER_P(FieldIIs, inner_matcher, "") {
@@ -8116,6 +8368,190 @@ TEST(MatcherPMacroTest, WorksOnMoveOnlyType) {
   EXPECT_THAT(p, UniquePointee(3));
   EXPECT_THAT(p, Not(UniquePointee(2)));
 }
+
+#if GTEST_HAS_EXCEPTIONS
+
+// std::function<void()> is used below for compatibility with older copies of
+// GCC. Normally, a raw lambda is all that is needed.
+
+// Test that examples from documentation compile
+TEST(ThrowsTest, Examples) {
+  EXPECT_THAT(
+      std::function<void()>([]() { throw std::runtime_error("message"); }),
+      Throws<std::runtime_error>());
+
+  EXPECT_THAT(
+      std::function<void()>([]() { throw std::runtime_error("message"); }),
+      ThrowsMessage<std::runtime_error>(HasSubstr("message")));
+}
+
+TEST(ThrowsTest, DoesNotGenerateDuplicateCatchClauseWarning) {
+  EXPECT_THAT(std::function<void()>([]() { throw std::exception(); }),
+              Throws<std::exception>());
+}
+
+TEST(ThrowsTest, CallableExecutedExactlyOnce) {
+  size_t a = 0;
+
+  EXPECT_THAT(std::function<void()>([&a]() {
+                a++;
+                throw 10;
+              }),
+              Throws<int>());
+  EXPECT_EQ(a, 1u);
+
+  EXPECT_THAT(std::function<void()>([&a]() {
+                a++;
+                throw std::runtime_error("message");
+              }),
+              Throws<std::runtime_error>());
+  EXPECT_EQ(a, 2u);
+
+  EXPECT_THAT(std::function<void()>([&a]() {
+                a++;
+                throw std::runtime_error("message");
+              }),
+              ThrowsMessage<std::runtime_error>(HasSubstr("message")));
+  EXPECT_EQ(a, 3u);
+
+  EXPECT_THAT(std::function<void()>([&a]() {
+                a++;
+                throw std::runtime_error("message");
+              }),
+              Throws<std::runtime_error>(
+                  Property(&std::runtime_error::what, HasSubstr("message"))));
+  EXPECT_EQ(a, 4u);
+}
+
+TEST(ThrowsTest, Describe) {
+  Matcher<std::function<void()>> matcher = Throws<std::runtime_error>();
+  std::stringstream ss;
+  matcher.DescribeTo(&ss);
+  auto explanation = ss.str();
+  EXPECT_THAT(explanation, HasSubstr("std::runtime_error"));
+}
+
+TEST(ThrowsTest, Success) {
+  Matcher<std::function<void()>> matcher = Throws<std::runtime_error>();
+  StringMatchResultListener listener;
+  EXPECT_TRUE(matcher.MatchAndExplain(
+      []() { throw std::runtime_error("error message"); }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("std::runtime_error"));
+}
+
+TEST(ThrowsTest, FailWrongType) {
+  Matcher<std::function<void()>> matcher = Throws<std::runtime_error>();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain(
+      []() { throw std::logic_error("error message"); }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("std::logic_error"));
+  EXPECT_THAT(listener.str(), HasSubstr("\"error message\""));
+}
+
+TEST(ThrowsTest, FailWrongTypeNonStd) {
+  Matcher<std::function<void()>> matcher = Throws<std::runtime_error>();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain([]() { throw 10; }, &listener));
+  EXPECT_THAT(listener.str(),
+              HasSubstr("throws an exception of an unknown type"));
+}
+
+TEST(ThrowsTest, FailNoThrow) {
+  Matcher<std::function<void()>> matcher = Throws<std::runtime_error>();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain([]() { (void)0; }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("does not throw any exception"));
+}
+
+class ThrowsPredicateTest
+    : public TestWithParam<Matcher<std::function<void()>>> {};
+
+TEST_P(ThrowsPredicateTest, Describe) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  std::stringstream ss;
+  matcher.DescribeTo(&ss);
+  auto explanation = ss.str();
+  EXPECT_THAT(explanation, HasSubstr("std::runtime_error"));
+  EXPECT_THAT(explanation, HasSubstr("error message"));
+}
+
+TEST_P(ThrowsPredicateTest, Success) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  StringMatchResultListener listener;
+  EXPECT_TRUE(matcher.MatchAndExplain(
+      []() { throw std::runtime_error("error message"); }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("std::runtime_error"));
+}
+
+TEST_P(ThrowsPredicateTest, FailWrongType) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain(
+      []() { throw std::logic_error("error message"); }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("std::logic_error"));
+  EXPECT_THAT(listener.str(), HasSubstr("\"error message\""));
+}
+
+TEST_P(ThrowsPredicateTest, FailWrongTypeNonStd) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain([]() { throw 10; }, &listener));
+  EXPECT_THAT(listener.str(),
+              HasSubstr("throws an exception of an unknown type"));
+}
+
+TEST_P(ThrowsPredicateTest, FailWrongMessage) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain(
+      []() { throw std::runtime_error("wrong message"); }, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("std::runtime_error"));
+  EXPECT_THAT(listener.str(), Not(HasSubstr("wrong message")));
+}
+
+TEST_P(ThrowsPredicateTest, FailNoThrow) {
+  Matcher<std::function<void()>> matcher = GetParam();
+  StringMatchResultListener listener;
+  EXPECT_FALSE(matcher.MatchAndExplain([]() {}, &listener));
+  EXPECT_THAT(listener.str(), HasSubstr("does not throw any exception"));
+}
+
+INSTANTIATE_TEST_SUITE_P(
+    AllMessagePredicates, ThrowsPredicateTest,
+    Values(Matcher<std::function<void()>>(
+        ThrowsMessage<std::runtime_error>(HasSubstr("error message")))));
+
+// Tests that Throws<E1>(Matcher<E2>{}) compiles even when E2 != const E1&.
+TEST(ThrowsPredicateCompilesTest, ExceptionMatcherAcceptsBroadType) {
+  {
+    Matcher<std::function<void()>> matcher =
+        ThrowsMessage<std::runtime_error>(HasSubstr("error message"));
+    EXPECT_TRUE(
+        matcher.Matches([]() { throw std::runtime_error("error message"); }));
+    EXPECT_FALSE(
+        matcher.Matches([]() { throw std::runtime_error("wrong message"); }));
+  }
+
+  {
+    Matcher<uint64_t> inner = Eq(10);
+    Matcher<std::function<void()>> matcher = Throws<uint32_t>(inner);
+    EXPECT_TRUE(matcher.Matches([]() { throw(uint32_t) 10; }));
+    EXPECT_FALSE(matcher.Matches([]() { throw(uint32_t) 11; }));
+  }
+}
+
+// Tests that ThrowsMessage("message") is equivalent
+// to ThrowsMessage(Eq<std::string>("message")).
+TEST(ThrowsPredicateCompilesTest, MessageMatcherAcceptsNonMatcher) {
+  Matcher<std::function<void()>> matcher =
+      ThrowsMessage<std::runtime_error>("error message");
+  EXPECT_TRUE(
+      matcher.Matches([]() { throw std::runtime_error("error message"); }));
+  EXPECT_FALSE(matcher.Matches(
+      []() { throw std::runtime_error("wrong error message"); }));
+}
+
+#endif  // GTEST_HAS_EXCEPTIONS
 
 }  // namespace
 }  // namespace gmock_matchers_test

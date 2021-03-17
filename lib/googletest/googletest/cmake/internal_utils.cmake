@@ -72,7 +72,7 @@ macro(config_compiler_and_linker)
   if (MSVC)
     # Newlines inside flags variables break CMake's NMake generator.
     # TODO(vladl@google.com): Add -RTCs and -RTCu to debug builds.
-    set(cxx_base_flags "-GS -W4 -WX -wd4251 -wd4275 -nologo -J -Zi")
+    set(cxx_base_flags "-GS -W4 -WX -wd4251 -wd4275 -nologo -J")
     set(cxx_base_flags "${cxx_base_flags} -D_UNICODE -DUNICODE -DWIN32 -D_WIN32")
     set(cxx_base_flags "${cxx_base_flags} -DSTRICT -DWIN32_LEAN_AND_MEAN")
     set(cxx_exception_flags "-EHsc -D_HAS_EXCEPTIONS=1")
@@ -244,7 +244,13 @@ function(cxx_executable name dir libs)
 endfunction()
 
 # Sets PYTHONINTERP_FOUND and PYTHON_EXECUTABLE.
-find_package(PythonInterp)
+if ("${CMAKE_VERSION}" VERSION_LESS "3.12.0")
+  find_package(PythonInterp)
+else()
+  find_package(Python COMPONENTS Interpreter)
+  set(PYTHONINTERP_FOUND ${Python_Interpreter_FOUND})
+  set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})
+endif()
 
 # cxx_test_with_flags(name cxx_flags libs srcs...)
 #
@@ -252,13 +258,7 @@ find_package(PythonInterp)
 # from the given source files with the given compiler flags.
 function(cxx_test_with_flags name cxx_flags libs)
   cxx_executable_with_flags(${name} "${cxx_flags}" "${libs}" ${ARGN})
-  if (WIN32 OR MINGW)
-    add_test(NAME ${name}
-      COMMAND "powershell" "-Command" "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/RunTest.ps1" "$<TARGET_FILE:${name}>")
-  else()
-    add_test(NAME ${name}
-      COMMAND "$<TARGET_FILE:${name}>")
-  endif()
+    add_test(NAME ${name} COMMAND "$<TARGET_FILE:${name}>")
 endfunction()
 
 # cxx_test(name libs srcs...)
@@ -282,45 +282,24 @@ function(py_test name)
         # Multi-configuration build generators as for Visual Studio save
         # output in a subdirectory of CMAKE_CURRENT_BINARY_DIR (Debug,
         # Release etc.), so we have to provide it here.
-        if (WIN32 OR MINGW)
-          add_test(NAME ${name}
-            COMMAND powershell -Command ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/RunTest.ps1
-              ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+        add_test(NAME ${name}
+          COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
               --build_dir=${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG> ${ARGN})
-        else()
-          add_test(NAME ${name}
-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
-              --build_dir=${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG> ${ARGN})
-        endif()
       else (CMAKE_CONFIGURATION_TYPES)
         # Single-configuration build generators like Makefile generators
         # don't have subdirs below CMAKE_CURRENT_BINARY_DIR.
-        if (WIN32 OR MINGW)
-          add_test(NAME ${name}
-            COMMAND powershell -Command ${CMAKE_CURRENT_BINARY_DIR}/RunTest.ps1
-              ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
-              --build_dir=${CMAKE_CURRENT_BINARY_DIR} ${ARGN})
-        else()
-          add_test(NAME ${name}
-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
-              --build_dir=${CMAKE_CURRENT_BINARY_DIR} ${ARGN})
-        endif()
+        add_test(NAME ${name}
+          COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+            --build_dir=${CMAKE_CURRENT_BINARY_DIR} ${ARGN})
       endif (CMAKE_CONFIGURATION_TYPES)
     else()
       # ${CMAKE_CURRENT_BINARY_DIR} is known at configuration time, so we can
       # directly bind it from cmake. ${CTEST_CONFIGURATION_TYPE} is known
       # only at ctest runtime (by calling ctest -c <Configuration>), so
       # we have to escape $ to delay variable substitution here.
-      if (WIN32 OR MINGW)
-        add_test(NAME ${name}
-          COMMAND powershell -Command ${CMAKE_CURRENT_BINARY_DIR}/RunTest.ps1
-            ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
-            --build_dir=${CMAKE_CURRENT_BINARY_DIR}/\${CTEST_CONFIGURATION_TYPE} ${ARGN})
-      else()
-        add_test(NAME ${name}
-          COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
-            --build_dir=${CMAKE_CURRENT_BINARY_DIR}/\${CTEST_CONFIGURATION_TYPE} ${ARGN})
-      endif()
+      add_test(NAME ${name}
+        COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+          --build_dir=${CMAKE_CURRENT_BINARY_DIR}/\${CTEST_CONFIGURATION_TYPE} ${ARGN})
     endif()
   endif(PYTHONINTERP_FOUND)
 endfunction()

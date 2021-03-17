@@ -148,14 +148,14 @@ Functions</h2></td></tr>
 <p>Get the latest available pushed data in the provided stack. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a></td></tr>
+    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a></td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">INVALID_POINTER</td><td>if <b>stack</b> is either NULL, uninitialized or unaddressable. </td></tr>
-    <tr><td class="paramname">INDEX_OUT_OF_BOUND</td><td>if <b>stack</b> is empty.</td></tr>
+    <tr><td class="paramname">INDEX_OUT_OF_BOUND</td><td>if <b>stack</b> is ll_empty.</td></tr>
   </table>
   </dd>
 </dl>
@@ -167,26 +167,26 @@ Example</h4>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Initializing an empty stack</span></div>
-<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">init</a>();</div>
+<div class="line">    <span class="comment">// Initializing an ll_empty stack</span></div>
+<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">ll_init</a>();</div>
 <div class="line">    <span class="comment">// Pushing data into the stack</span></div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 37);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 52);</div>
 <div class="line">    <span class="comment">// Getting the top data in the stack</span></div>
 <div class="line">    printf(<span class="stringliteral">&quot;%d\n&quot;</span>, <a class="code" href="stack_8h.html#a03814d067dbf03cc7d81f00cd5a7d7d0">top</a>(stack));</div>
 <div class="line">    <span class="comment">// Destroying stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">destroy</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">ll_destroy</a>(stack);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md40"></a>
 Output</h4>
 <div class="fragment"><div class="line">52</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> <a class="el" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2" title="Adds a new data to the provided stack.">push()</a> </dd></dl>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a> <a class="el" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2" title="Adds a new data to the provided stack.">push()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="stack_8c_source.html#l00014">14</a> of file <a class="el" href="stack_8c_source.html">stack.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                         {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211">get</a>(stack, 0);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211">ll_get</a>(stack, 0);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -229,7 +229,7 @@ Here is the call graph for this function:</div>
 <p>Adds a new data to the provided stack. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> </td></tr>
+    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a> </td></tr>
     <tr><td class="paramname">data</td><td>Data to be pushed in the provided stack</td></tr>
   </table>
   </dd>
@@ -249,32 +249,32 @@ Example</h4>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Initializing an empty stack</span></div>
-<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">init</a>();</div>
+<div class="line">    <span class="comment">// Initializing an ll_empty stack</span></div>
+<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">ll_init</a>();</div>
 <div class="line">    <span class="comment">// Pushing data into the stack</span></div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 7);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 3);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 2);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 5);</div>
 <div class="line">    <span class="comment">// Traversing the stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">traverse</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">ll_traverse</a>(stack);</div>
 <div class="line">    <span class="comment">// Destroying stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">destroy</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">ll_destroy</a>(stack);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md42"></a>
 Output</h4>
 <div class="fragment"><div class="line">5 2 3 7</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a> <a class="el" href="stack_8h.html#a99d0798eb7bfa82ba55603b4b0ef1626" title="Erases the latest data pushed into the provided stack.">pop()</a> <a class="el" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f" title="Prints all the elements of the provided linked list separated by space which ends with newline.">traverse()</a> </dd></dl>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a> <a class="el" href="stack_8h.html#a99d0798eb7bfa82ba55603b4b0ef1626" title="Erases the latest data pushed into the provided stack.">pop()</a> <a class="el" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f" title="Prints all the elements of the provided linked list separated by space which ends with newline.">ll_traverse()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="stack_8c_source.html#l00022">22</a> of file <a class="el" href="stack_8c_source.html">stack.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="node_8h.html#a63f364995f90d701e48325faa632d1c1">size</a>(stack)) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3">insert</a>(stack, 0, data);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="node_8h.html#a63f364995f90d701e48325faa632d1c1">ll_size</a>(stack)) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3">ll_insert</a>(stack, 0, data);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// Remember! insert cannot create new position</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce">append</a>(stack, data);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// Remember! ll_insert cannot create new position</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce">ll_append</a>(stack, data);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
@@ -285,7 +285,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Adds a new data to the provided stack." alt="" coords="5,56,56,83"/>
 <area shape="rect" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list." alt="" coords="104,5,168,32"/>
 <area shape="rect" href="node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3" title="Inserts new data at specified index given the index already exists in provided list." alt="" coords="109,56,163,83"/>
-<area shape="rect" href="node_8h.html#a63f364995f90d701e48325faa632d1c1" title="Returns the size of provided list." alt="" coords="113,107,159,133"/>
+<area shape="rect" href="node_8h.html#a63f364995f90d701e48325faa632d1c1" title="Returns the ll_size of provided list." alt="" coords="113,107,159,133"/>
 </map>
 </div>
 
@@ -310,14 +310,14 @@ Here is the call graph for this function:</div>
 <p>Erases the latest data pushed into the provided stack. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">init()</a></td></tr>
+    <tr><td class="paramname">stack</td><td>Pointer to the stack instantiated by <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a></td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">INVALID_POINTER</td><td>if <b>stack</b> is either NULL, uninitialized or unaddressable. </td></tr>
-    <tr><td class="paramname">INDEX_OUT_OF_BOUND</td><td>if <b>stack</b> is empty.</td></tr>
+    <tr><td class="paramname">INDEX_OUT_OF_BOUND</td><td>if <b>stack</b> is ll_empty.</td></tr>
   </table>
   </dd>
 </dl>
@@ -329,22 +329,22 @@ Example</h4>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Initializing an empty stack</span></div>
-<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">init</a>();</div>
+<div class="line">    <span class="comment">// Initializing an ll_empty stack</span></div>
+<div class="line">    <a class="code" href="struct_linked_list.html">Queue</a> *stack = <a class="code" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">ll_init</a>();</div>
 <div class="line">    <span class="comment">// Pushing data into the stack</span></div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 7);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 3);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 2);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a>(stack, 5);</div>
 <div class="line">    <span class="comment">// Traversing the stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">traverse</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">ll_traverse</a>(stack);</div>
 <div class="line">    <span class="comment">// Popping some data from stack</span></div>
 <div class="line">    <a class="code" href="stack_8h.html#a99d0798eb7bfa82ba55603b4b0ef1626">pop</a>(stack);</div>
 <div class="line">    <a class="code" href="stack_8h.html#a99d0798eb7bfa82ba55603b4b0ef1626">pop</a>(stack);</div>
 <div class="line">    <span class="comment">// Traversing the stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">traverse</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">ll_traverse</a>(stack);</div>
 <div class="line">    <span class="comment">// Destroying stack</span></div>
-<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">destroy</a>(stack);</div>
+<div class="line">    <a class="code" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">ll_destroy</a>(stack);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
@@ -352,11 +352,11 @@ Example</h4>
 Output</h4>
 <div class="fragment"><div class="line">5 2 3 7</div>
 <div class="line">3 7</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2" title="Adds a new data to the provided stack.">push()</a> <a class="el" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f" title="Prints all the elements of the provided linked list separated by space which ends with newline.">traverse()</a> <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by init().">destroy()</a> </dd></dl>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2" title="Adds a new data to the provided stack.">push()</a> <a class="el" href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f" title="Prints all the elements of the provided linked list separated by space which ends with newline.">ll_traverse()</a> <a class="el" href="node_8h.html#a9f139505bda1aaab895780b127e84cb3" title="Free the memory occupied by the provided list that was allocated on heap by ll_init().">ll_destroy()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="stack_8c_source.html#l00032">32</a> of file <a class="el" href="stack_8c_source.html">stack.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                      {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0">erase</a>(stack, 0);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0">ll_erase</a>(stack, 0);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -372,17 +372,17 @@ Here is the call graph for this function:</div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anode_8h_html_afac8587f402c4b50c8bf9c8b126a634f"><div class="ttname"><a href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">traverse</a></div><div class="ttdeci">int traverse(LinkedList *ll)</div><div class="ttdoc">Prints all the elements of the provided linked list separated by space which ends with newline.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00310">node.c:310</a></div></div>
-<div class="ttc" id="anode_8h_html_a56f9368e5d8f6dd9aec8bb8b8c06e211"><div class="ttname"><a href="node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211">get</a></div><div class="ttdeci">node_t get(LinkedList *ll, int index)</div><div class="ttdoc">Get the data of element of provided index of the provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00031">node.c:31</a></div></div>
+<div class="ttc" id="anode_8h_html_afac8587f402c4b50c8bf9c8b126a634f"><div class="ttname"><a href="node_8h.html#afac8587f402c4b50c8bf9c8b126a634f">ll_traverse</a></div><div class="ttdeci">int ll_traverse(LinkedList *ll)</div><div class="ttdoc">Prints all the elements of the provided linked list separated by space which ends with newline.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00310">node.c:310</a></div></div>
+<div class="ttc" id="anode_8h_html_a56f9368e5d8f6dd9aec8bb8b8c06e211"><div class="ttname"><a href="node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211">ll_get</a></div><div class="ttdeci">node_t ll_get(LinkedList *ll, int index)</div><div class="ttdoc">Get the data of element of provided index of the provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00031">node.c:31</a></div></div>
 <div class="ttc" id="astack_8h_html_a99d0798eb7bfa82ba55603b4b0ef1626"><div class="ttname"><a href="stack_8h.html#a99d0798eb7bfa82ba55603b4b0ef1626">pop</a></div><div class="ttdeci">int pop(Stack *stack)</div><div class="ttdoc">Erases the latest data pushed into the provided stack.</div><div class="ttdef"><b>Definition:</b> <a href="stack_8c_source.html#l00032">stack.c:32</a></div></div>
-<div class="ttc" id="anode_8h_html_a92feac916df4ee4e8bc4f05a96d0f0f3"><div class="ttname"><a href="node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3">insert</a></div><div class="ttdeci">int insert(LinkedList *ll, int index, node_t newData)</div><div class="ttdoc">Inserts new data at specified index given the index already exists in provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00144">node.c:144</a></div></div>
+<div class="ttc" id="anode_8h_html_a92feac916df4ee4e8bc4f05a96d0f0f3"><div class="ttname"><a href="node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3">ll_insert</a></div><div class="ttdeci">int ll_insert(LinkedList *ll, int index, node_t newData)</div><div class="ttdoc">Inserts new data at specified index given the index already exists in provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00144">node.c:144</a></div></div>
 <div class="ttc" id="astruct_linked_list_html"><div class="ttname"><a href="struct_linked_list.html">LinkedList</a></div><div class="ttdoc">Linked List is a collection of nodes accessed by a single Head Node pointer.</div><div class="ttdef"><b>Definition:</b> <a href="node_8h_source.html#l00104">node.h:104</a></div></div>
-<div class="ttc" id="anode_8h_html_a668f7f55e752c951af12c0819d18c4e3"><div class="ttname"><a href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">init</a></div><div class="ttdeci">LinkedList * init()</div><div class="ttdoc">Creates a new empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00015">node.c:15</a></div></div>
-<div class="ttc" id="anode_8h_html_a63f364995f90d701e48325faa632d1c1"><div class="ttname"><a href="node_8h.html#a63f364995f90d701e48325faa632d1c1">size</a></div><div class="ttdeci">int size(LinkedList *ll)</div><div class="ttdoc">Returns the size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00083">node.c:83</a></div></div>
+<div class="ttc" id="anode_8h_html_a668f7f55e752c951af12c0819d18c4e3"><div class="ttname"><a href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3">ll_init</a></div><div class="ttdeci">LinkedList * ll_init()</div><div class="ttdoc">Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00015">node.c:15</a></div></div>
+<div class="ttc" id="anode_8h_html_a63f364995f90d701e48325faa632d1c1"><div class="ttname"><a href="node_8h.html#a63f364995f90d701e48325faa632d1c1">ll_size</a></div><div class="ttdeci">int ll_size(LinkedList *ll)</div><div class="ttdoc">Returns the ll_size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00083">node.c:83</a></div></div>
 <div class="ttc" id="astack_8h_html_a5461238c2b1e0143d2a359380ce543f2"><div class="ttname"><a href="stack_8h.html#a5461238c2b1e0143d2a359380ce543f2">push</a></div><div class="ttdeci">int push(Stack *stack, node_t data)</div><div class="ttdoc">Adds a new data to the provided stack.</div><div class="ttdef"><b>Definition:</b> <a href="stack_8c_source.html#l00022">stack.c:22</a></div></div>
-<div class="ttc" id="anode_8h_html_a9f139505bda1aaab895780b127e84cb3"><div class="ttname"><a href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">destroy</a></div><div class="ttdeci">int destroy(LinkedList *ll)</div><div class="ttdoc">Free the memory occupied by the provided list that was allocated on heap by init().</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00288">node.c:288</a></div></div>
-<div class="ttc" id="anode_8h_html_a4589babba782f6b4c1e6a5b72d09a4ce"><div class="ttname"><a href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce">append</a></div><div class="ttdeci">int append(LinkedList *ll, node_t newData)</div><div class="ttdoc">Adds new data to the end of the provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00104">node.c:104</a></div></div>
-<div class="ttc" id="anode_8h_html_ab375d736ae4cb67dc8ca8a72ca87efa0"><div class="ttname"><a href="node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0">erase</a></div><div class="ttdeci">int erase(LinkedList *ll, int index)</div><div class="ttdoc">Erases the element of the list specified by index.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00205">node.c:205</a></div></div>
+<div class="ttc" id="anode_8h_html_a9f139505bda1aaab895780b127e84cb3"><div class="ttname"><a href="node_8h.html#a9f139505bda1aaab895780b127e84cb3">ll_destroy</a></div><div class="ttdeci">int ll_destroy(LinkedList *ll)</div><div class="ttdoc">Free the memory occupied by the provided list that was allocated on heap by ll_init().</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00288">node.c:288</a></div></div>
+<div class="ttc" id="anode_8h_html_a4589babba782f6b4c1e6a5b72d09a4ce"><div class="ttname"><a href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce">ll_append</a></div><div class="ttdeci">int ll_append(LinkedList *ll, node_t newData)</div><div class="ttdoc">Adds new data to the end of the provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00104">node.c:104</a></div></div>
+<div class="ttc" id="anode_8h_html_ab375d736ae4cb67dc8ca8a72ca87efa0"><div class="ttname"><a href="node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0">ll_erase</a></div><div class="ttdeci">int ll_erase(LinkedList *ll, int index)</div><div class="ttdoc">Erases the element of the list specified by index.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00205">node.c:205</a></div></div>
 <div class="ttc" id="astack_8h_html"><div class="ttname"><a href="stack_8h.html">stack.h</a></div></div>
 <div class="ttc" id="astack_8h_html_a03814d067dbf03cc7d81f00cd5a7d7d0"><div class="ttname"><a href="stack_8h.html#a03814d067dbf03cc7d81f00cd5a7d7d0">top</a></div><div class="ttdeci">node_t top(Stack *stack)</div><div class="ttdoc">Get the latest available pushed data in the provided stack.</div><div class="ttdef"><b>Definition:</b> <a href="stack_8c_source.html#l00014">stack.c:14</a></div></div>
 <!-- start footer part -->

@@ -6,5 +6,5 @@ digraph "front"
   rankdir="LR";
   Node1 [label="front",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Get the earliest available enqueued data of the provided queue."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="get",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211",tooltip="Get the data of element of provided index of the provided list."];
+  Node2 [label="ll_get",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211",tooltip="Get the data of element of provided index of the provided list."];
 }
