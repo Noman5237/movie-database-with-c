@@ -48,6 +48,9 @@ int defaultExceptionHandler(int errorCode) {
 			case OUT_OF_MEMORY:
 				printf("Probably primary memory allocated for this program is full.");
 				break;
+			case FILE_READ_ERROR:
+				printf("Provided file cannot be read maybe because the path doesn't exist.");
+				break;
 			default:
 				printf("Error is not a fault of our knowledge,"
 				       " but a mistake of our judgment giving assent to that which is not true.");

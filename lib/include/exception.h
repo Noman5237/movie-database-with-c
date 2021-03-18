@@ -20,7 +20,8 @@ enum errorCode {
 	INVALID_POINTER = 101,
 	CALLBACK_ERROR,
 	INDEX_OUT_OF_BOUNDS,
-	OUT_OF_MEMORY
+	OUT_OF_MEMORY,
+	FILE_READ_ERROR,
 };
 
 /**
@@ -64,7 +65,7 @@ enum exceptionResponder {
  *
  * @see defaultExceptionHandler()
  */
-int exception_new(int errorCode, const char* file, int line, int (*handler)(int));
+int exception_new(int errorCode, const char *file, int line, int (*handler)(int));
 
 
 /* ============================== UTILITY ========================= */

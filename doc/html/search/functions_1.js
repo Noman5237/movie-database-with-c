@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['back_69',['back',['../queue_8h.html#aa3621761acb7e686aef0eac5a584f726',1,'back(Queue *queue):&#160;queue.c'],['../queue_8c.html#aa3621761acb7e686aef0eac5a584f726',1,'back(Queue *queue):&#160;queue.c']]]
+  ['exception_5fnew_67',['exception_new',['../exception_8h.html#a6475a25f85aa6a335a98eb9b15168901',1,'exception_new(int errorCode, const char *file, int line, int(*handler)(int)):&#160;exception.c'],['../exception_8c.html#a6475a25f85aa6a335a98eb9b15168901',1,'exception_new(int errorCode, const char *file, int line, int(*handler)(int)):&#160;exception.c']]]
 ];

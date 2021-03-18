@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <exception.h>
+#include <string.h>
 
 typedef struct Movie {
 	char *title;
@@ -22,6 +23,7 @@ typedef struct Movie {
 	
 } Movie;
 
-Movie *createMovie(char *title);
+
+Movie *movie_init(char *title, char *year, char *actor, char *actress, char *director, char *producer, char *plot);
 
 #endif //ASSIGNMENT_MOVIE_H

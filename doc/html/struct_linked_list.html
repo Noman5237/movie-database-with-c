@@ -109,8 +109,9 @@ Collaboration diagram for LinkedList:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct_linked_list__coll__graph.png" border="0" usemap="#a_linked_list_coll__map" alt="Collaboration graph"/></div>
 <map name="_linked_list_coll__map" id="a_linked_list_coll__map">
-<area shape="rect" title="Linked List is a collection of nodes accessed by a single Head Node pointer." alt="" coords="5,97,87,124"/>
-<area shape="rect" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes." alt="" coords="20,7,72,33"/>
+<area shape="rect" title="Linked List is a collection of nodes accessed by a single Head Node pointer." alt="" coords="5,187,87,213"/>
+<area shape="rect" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes." alt="" coords="20,96,72,123"/>
+<area shape="rect" href="struct_movie.html" title=" " alt="" coords="19,5,73,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -129,7 +130,7 @@ Design Preview</h3>
 <div class="fragment"><div class="line">+-------------------------------------------------------+</div>
 <div class="line">|                                                       |</div>
 <div class="line">| +-----------------+                                   |</div>
-<div class="line">| |<a class="code" href="node_8h.html#a63f364995f90d701e48325faa632d1c1">ll_size</a>       | 4   |    Doubly Circular Linked List    |</div>
+<div class="line">| |<a class="code" href="node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68">ll_size</a>       | 4   |    Doubly Circular Linked List    |</div>
 <div class="line">| +-----------------+                                   |</div>
 <div class="line">| +---------------------------------------------------+ |</div>
 <div class="line">| |                                                   | |</div>
@@ -149,7 +150,7 @@ Design Preview</h3>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Instead of declaring pointer to pointer to <a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a> Head as Linked List, Linked List is a specially designed object with ll_size and node head pointer because of extensibility, flexibility and its similarity to unanimous one dimensional dynamic storage data structures. The structure contains ll_size variable for optimization purposes.</dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>Do not modify the ll_size of head of the Linked List unless you know what you doing and are solely responsible for unwanted and weird behaviour of your programs.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Any type of <b>modification</b> of Linked List without the supplied modifier functions is not intended and the supplied software is not responsible for any fatal or non crashes and unwanted and weird behaviour of the user programs.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a> <a class="el" href="node_8h.html#a668f7f55e752c951af12c0819d18c4e3" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated obj...">ll_init()</a> <a class="el" href="node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce" title="Adds new data to the end of the provided list.">ll_append()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a> <a class="el" href="node_8h.html#aca149afbffff1ce8761a3dfc0109a947" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated ...">ll_init()</a> <a class="el" href="node_8h.html#ae02cb6b9770253b4db327750bf694d2b" title="Adds new data to the end of the provided list.">ll_append()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00104">104</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
@@ -187,7 +188,7 @@ Design Preview</h3>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anode_8h_html_a63f364995f90d701e48325faa632d1c1"><div class="ttname"><a href="node_8h.html#a63f364995f90d701e48325faa632d1c1">ll_size</a></div><div class="ttdeci">int ll_size(LinkedList *ll)</div><div class="ttdoc">Returns the ll_size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00083">node.c:83</a></div></div>
+<div class="ttc" id="anode_8h_html_a35c1fece7d3ade3d38b20cc83fd82b68"><div class="ttname"><a href="node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68">ll_size</a></div><div class="ttdeci">int ll_size(LinkedList *ll)</div><div class="ttdoc">Returns the ll_size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00083">node.c:83</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

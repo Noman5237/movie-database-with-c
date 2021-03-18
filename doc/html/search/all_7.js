@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['get_24',['get',['../node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211',1,'get(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a56f9368e5d8f6dd9aec8bb8b8c06e211',1,'get(LinkedList *ll, int index):&#160;node.c']]]
+  ['index_5fout_5fof_5fbounds_19',['INDEX_OUT_OF_BOUNDS',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604',1,'exception.h']]],
+  ['invalid_5fpointer_20',['INVALID_POINTER',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a038eb674e48e295d5955bd52894b2a5b',1,'exception.h']]]
 ];

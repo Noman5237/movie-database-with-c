@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['data_92',['data',['../struct_node.html#a61209720cdd10f4e65e2a3f9932aa633',1,'Node']]],
-  ['defaultexceptionhandlerfatality_93',['defaultExceptionHandlerFatality',['../exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64',1,'exception.c']]]
+  ['actor_85',['actor',['../struct_movie.html#a9fd568eda583299e71a9e0f82673e17e',1,'Movie']]],
+  ['actress_86',['actress',['../struct_movie.html#a8fc7584dcb39d137c60d83106e301b52',1,'Movie']]]
 ];

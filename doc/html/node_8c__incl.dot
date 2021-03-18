@@ -14,5 +14,12 @@ digraph "lib/src/DataStruct/node.c"
   Node5 [label="exception.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$exception_8h.html",tooltip=" "];
   Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="movie.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$movie_8h.html",tooltip=" "];
+  Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -5,13 +5,5 @@ digraph "lib/include/DataStruct/node.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="lib/include/DataStruct\l/node.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="lib/include/DataStruct\l/queue.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8h.html",tooltip=" "];
-  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="lib/src/DataStruct\l/queue.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html",tooltip=" "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="lib/include/DataStruct\l/stack.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$stack_8h.html",tooltip=" "];
-  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="lib/src/DataStruct\l/stack.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$stack_8c.html",tooltip=" "];
-  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="lib/src/DataStruct\l/node.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8c.html",tooltip=" "];
+  Node2 [label="lib/src/DataStruct\l/node.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$node_8c.html",tooltip=" "];
 }

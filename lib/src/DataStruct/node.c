@@ -30,7 +30,7 @@ LinkedList *ll_init() {
 
 node_t ll_get(LinkedList *ll, int index) {
 	if (!ll) {
-		return EXCEPTION_NEW(INVALID_POINTER);
+		return EXCEPTION_NEW(INVALID_POINTER), (node_t) NULL;
 	}
 	
 	int reverse = 0;
@@ -45,7 +45,7 @@ node_t ll_get(LinkedList *ll, int index) {
 	}
 	
 	if (index >= ll->_size) {
-		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS);
+		return EXCEPTION_NEW(INDEX_OUT_OF_BOUNDS), (node_t) NULL;
 	}
 	
 	Node *node = ll->_head;
@@ -290,13 +290,15 @@ int ll_destroy(LinkedList *ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
-	Node *node = ll->_head;
-	Node *next = node->next;
-	
-	// Although at the end of the loop next will point to freed address
-	// Because the loop always terminates by following condition
-	for (int i = 0; i < ll->_size; ++i, node = next, next = next->next) {
-		free(node);
+	if (!ll_empty(ll)) {
+		Node *node = ll->_head;
+		Node *next = node->next;
+		
+		// Although at the end of the loop next will point to freed address
+		// Because the loop always terminates by following condition
+		for (int i = 0; i < ll->_size; ++i, node = next, next = next->next) {
+			ll_freeData(node->data);
+		}
 	}
 	
 	free(ll);
@@ -312,7 +314,7 @@ int ll_traverse(LinkedList *ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
-	ll_forEach(ll, printer);
+	ll_forEach(ll, ll_printer);
 	printf("\n");
 	
 	return 0;

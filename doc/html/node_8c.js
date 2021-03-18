@@ -1,15 +1,14 @@
 var node_8c =
 [
-    [ "init", "node_8c.html#a668f7f55e752c951af12c0819d18c4e3", null ],
-    [ "get", "node_8c.html#a56f9368e5d8f6dd9aec8bb8b8c06e211", null ],
-    [ "forEach", "node_8c.html#ae6ee11ab91a4a58320a9853485dc57a1", null ],
-    [ "size", "node_8c.html#a63f364995f90d701e48325faa632d1c1", null ],
-    [ "empty", "node_8c.html#a6058336caaf0c464b47bf4fa2b90c0f6", null ],
-    [ "append", "node_8c.html#a4589babba782f6b4c1e6a5b72d09a4ce", null ],
-    [ "insert", "node_8c.html#a92feac916df4ee4e8bc4f05a96d0f0f3", null ],
-    [ "erase", "node_8c.html#ab375d736ae4cb67dc8ca8a72ca87efa0", null ],
-    [ "set", "node_8c.html#a43b3e5f853960dfafa59dabc0b825402", null ],
-    [ "destroy", "node_8c.html#a9f139505bda1aaab895780b127e84cb3", null ],
-    [ "traverse", "node_8c.html#afac8587f402c4b50c8bf9c8b126a634f", null ],
-    [ "printer", "node_8c.html#a6a58e3e799ad6e0fa8099418772c9ec8", null ]
+    [ "ll_init", "node_8c.html#aca149afbffff1ce8761a3dfc0109a947", null ],
+    [ "ll_get", "node_8c.html#a1aacf33605a3699ca1df74a14bead4eb", null ],
+    [ "ll_forEach", "node_8c.html#add41f788e88e16a992411e3716d53f64", null ],
+    [ "ll_size", "node_8c.html#a35c1fece7d3ade3d38b20cc83fd82b68", null ],
+    [ "ll_empty", "node_8c.html#ade0b00ebdbb6c7fdab32a4966339b7db", null ],
+    [ "ll_append", "node_8c.html#ae02cb6b9770253b4db327750bf694d2b", null ],
+    [ "ll_insert", "node_8c.html#a7babf11c31eaa0d3e36f738d9a80ab83", null ],
+    [ "ll_erase", "node_8c.html#a9feac2e8f03d8ed0b6d49c047fbcf65d", null ],
+    [ "ll_set", "node_8c.html#a928b86515a1d04f6f53cfc21a0980699", null ],
+    [ "ll_destroy", "node_8c.html#aaa3ee4e0686089be9dc3a6e0559ca350", null ],
+    [ "ll_traverse", "node_8c.html#a462b1f7574d9cb16d79795c175503720", null ]
 ];

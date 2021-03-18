@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_79',['get',['../node_8h.html#a56f9368e5d8f6dd9aec8bb8b8c06e211',1,'get(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a56f9368e5d8f6dd9aec8bb8b8c06e211',1,'get(LinkedList *ll, int index):&#160;node.c']]]
+  ['printer_81',['printer',['../node_8h.html#a6a58e3e799ad6e0fa8099418772c9ec8',1,'printer(node_t data):&#160;node.h'],['../movie_8c.html#aadfecf1ba2a35668349e0c8582404acb',1,'printer(Movie *movie):&#160;movie.c']]]
 ];

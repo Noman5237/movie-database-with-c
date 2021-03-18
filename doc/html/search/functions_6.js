@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_80',['init',['../node_8h.html#a668f7f55e752c951af12c0819d18c4e3',1,'init():&#160;node.c'],['../node_8c.html#a668f7f55e752c951af12c0819d18c4e3',1,'init():&#160;node.c']]],
-  ['insert_81',['insert',['../node_8h.html#a92feac916df4ee4e8bc4f05a96d0f0f3',1,'insert(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a92feac916df4ee4e8bc4f05a96d0f0f3',1,'insert(LinkedList *ll, int index, node_t newData):&#160;node.c']]]
+  ['setdefaultexceptionhandlerfatality_82',['setDefaultExceptionHandlerFatality',['../exception_8h.html#a787c0201d5270b2a4a49af48bf11a682',1,'setDefaultExceptionHandlerFatality(int fatality):&#160;exception.c'],['../exception_8c.html#a787c0201d5270b2a4a49af48bf11a682',1,'setDefaultExceptionHandlerFatality(int fatality):&#160;exception.c']]]
 ];

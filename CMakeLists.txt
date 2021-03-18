@@ -31,18 +31,28 @@ add_library(movie SHARED
             lib/src/movie.c)
 
 target_link_libraries(movie excpt)
+
 # ---------------- Data Structure ---------------- #
 add_library(dtstrct SHARED
             lib/src/DataStruct/node.c)
 
 target_link_libraries(dtstrct movie)
 
+# ---------------- Database ---------------- #
+add_library(db SHARED
+            lib/src/database.c)
+
+target_link_libraries(db dtstrct)
+
 # ================================================== EXECUTABLE ================================================== #
 
 # ---------------- Tasks ---------------- #
 
-add_executable(MovieDatabase Tasks/MovieDatabase.c)
-target_link_libraries(MovieDatabase dtstrct)
+add_executable(Main Tasks/Main.c )
+target_link_libraries(Main db)
+
+add_executable(Test Tasks/Test.c )
+target_link_libraries(Test db)
 
 # ---------------- Tests ---------------- #
 

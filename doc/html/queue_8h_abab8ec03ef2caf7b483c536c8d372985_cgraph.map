@@ -1,4 +1,0 @@
-<map id="dequeue" name="dequeue">
-<area shape="rect" id="node1" title="Erases the earliest available enqueued data of the provided queue." alt="" coords="5,5,76,32"/>
-<area shape="rect" id="node2" href="$node_8h.html#ab375d736ae4cb67dc8ca8a72ca87efa0" title="Erases the element of the list specified by index." alt="" coords="124,5,179,32"/>
-</map>

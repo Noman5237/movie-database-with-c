@@ -1,5 +1,0 @@
-<map id="traverse" name="ll_traverse">
-<area shape="rect" id="node1" title="Prints all the elements of the provided linked list separated by space which ends with newline." alt="" coords="5,31,72,57"/>
-<area shape="rect" id="node2" href="$node_8c.html#ae6ee11ab91a4a58320a9853485dc57a1" title="Given the linked list pointer and callback function, ll_forEach function calls the callback function pas..." alt="" coords="120,5,187,32"/>
-<area shape="rect" id="node3" href="$node_8c.html#a6a58e3e799ad6e0fa8099418772c9ec8" title="Prints out the data supplied to the default output stream with a trailing whitespace." alt="" coords="124,56,183,83"/>
-</map>

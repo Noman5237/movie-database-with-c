@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['append_2',['append',['../node_8h.html#a4589babba782f6b4c1e6a5b72d09a4ce',1,'append(LinkedList *ll, node_t newData):&#160;node.c'],['../node_8c.html#a4589babba782f6b4c1e6a5b72d09a4ce',1,'append(LinkedList *ll, node_t newData):&#160;node.c']]]
+  ['actor_2',['actor',['../struct_movie.html#a9fd568eda583299e71a9e0f82673e17e',1,'Movie']]],
+  ['actress_3',['actress',['../struct_movie.html#a8fc7584dcb39d137c60d83106e301b52',1,'Movie']]]
 ];

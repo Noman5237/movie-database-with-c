@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['queue_101',['Queue',['../queue_8h.html#a48410e34198be741f10b49ff8a022345',1,'queue.h']]]
+  ['node_100',['Node',['../node_8h.html#a3b09f37e675bcd48a01bf22155996872',1,'node.h']]],
+  ['node_5ft_101',['node_t',['../node_8h.html#a8eb666b976b8b6895ab0a84ab9cc3f65',1,'node.h']]]
 ];

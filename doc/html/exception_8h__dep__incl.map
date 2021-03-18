@@ -1,10 +1,8 @@
 <map id="lib/include/exception.h" name="lib/include/exception.h">
-<area shape="rect" id="node1" title=" " alt="" coords="321,5,471,32"/>
-<area shape="rect" id="node2" href="$node_8h.html" title=" " alt="" coords="188,80,335,121"/>
-<area shape="rect" id="node7" href="$node_8c.html" title=" " alt="" coords="347,169,469,211"/>
-<area shape="rect" id="node8" href="$exception_8c.html" title=" " alt="" coords="433,87,561,114"/>
-<area shape="rect" id="node3" href="$queue_8h.html" title=" " alt="" coords="5,169,152,211"/>
-<area shape="rect" id="node5" href="$stack_8h.html" title=" " alt="" coords="176,169,323,211"/>
-<area shape="rect" id="node4" href="$queue_8c.html" title=" " alt="" coords="17,259,140,300"/>
-<area shape="rect" id="node6" href="$stack_8c.html" title=" " alt="" coords="188,259,311,300"/>
+<area shape="rect" id="node1" title=" " alt="" coords="67,5,218,32"/>
+<area shape="rect" id="node2" href="$node_8h.html" title=" " alt="" coords="49,155,196,196"/>
+<area shape="rect" id="node3" href="$node_8c.html" title=" " alt="" coords="5,244,128,285"/>
+<area shape="rect" id="node4" href="$movie_8h.html" title=" " alt="" coords="129,80,257,107"/>
+<area shape="rect" id="node6" href="$exception_8c.html" title=" " alt="" coords="281,80,409,107"/>
+<area shape="rect" id="node5" href="$movie_8c.html" title=" " alt="" coords="221,162,326,189"/>
 </map>

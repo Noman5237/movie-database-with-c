@@ -219,7 +219,7 @@ LinkedList *ll_init();
  *
  * ~~~
  *
- * @see ll_set() ll_init() ll_append() ll_destroy() printer()
+ * @see ll_set() ll_init() ll_append() ll_destroy() ll_printer()
  */
 node_t ll_get(LinkedList *ll, int index);
 
@@ -701,7 +701,7 @@ int ll_destroy(LinkedList *ll);
  *
  * <p>
  * ll_traverse is a minimal utility function to print the elements of the list.
- * It is implemented using ll_forEach() and another utility function printer().
+ * It is implemented using ll_forEach() and another utility function ll_printer().
  * It is recommended that users should make their own ll_traverse function
  * for customization and flexibility.
  *
@@ -745,19 +745,32 @@ int ll_destroy(LinkedList *ll);
  *
  * ~~~
  *
- * @see printer() ll_forEach()
+ * @see ll_printer() ll_forEach()
  */
 int ll_traverse(LinkedList *ll);
 
+/**
+ *
+ * @param data
+ * @return
+ */
+int ll_freeData(node_t data);
+
+/**
+ *
+ * @param data
+ * @return
+ */
+char *ll_getValue(node_t data, char *key);
 
 /**
  * Prints out the data supplied to the default output stream with a trailing whitespace.
  *
  * <p>
- * printer is a minimal callback function for ll_traverse function.
+ * ll_printer is a minimal callback function for ll_traverse function.
  *
  * @param data Data to be printed to the default output stream
- * It is recommended that users should make their own printer function
+ * It is recommended that users should make their own ll_printer function
  * for customization and flexibility.
  *
  * @return
@@ -768,7 +781,7 @@ int ll_traverse(LinkedList *ll);
  *
  * @see ll_traverse()
  */
-int printer(node_t data);
+int ll_printer(node_t data);
 
 
 #endif //LINKEDLIST_NODE_H
