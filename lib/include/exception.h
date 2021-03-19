@@ -22,6 +22,7 @@ enum errorCode {
 	INDEX_OUT_OF_BOUNDS,
 	OUT_OF_MEMORY,
 	FILE_READ_ERROR,
+	SYNTAX_ERROR,
 };
 
 /**

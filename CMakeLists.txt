@@ -26,21 +26,23 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/out/${CMAKE_SYSTE
 add_library(excpt SHARED
             lib/src/exception.c)
 
-# ---------------- Movie ---------------- #
-add_library(movie SHARED
-            lib/src/movie.c)
-
-target_link_libraries(movie excpt)
 
 # ---------------- Data Structure ---------------- #
-add_library(dtstrct SHARED
+add_library(dtstrct STATIC
             lib/src/DataStruct/node.c)
 
+target_link_libraries(dtstrct excpt)
+
+# ---------------- Movie ---------------- #
+add_library(movie STATIC
+            lib/src/movie.c)
+
 target_link_libraries(dtstrct movie)
+target_link_libraries(movie excpt)
 
 # ---------------- Database ---------------- #
 add_library(db SHARED
-            lib/src/database.c)
+            lib/src/Database/database.c lib/src/Database/queryParser.c)
 
 target_link_libraries(db dtstrct)
 
@@ -48,10 +50,10 @@ target_link_libraries(db dtstrct)
 
 # ---------------- Tasks ---------------- #
 
-add_executable(Main Tasks/Main.c )
+add_executable(Main Tasks/Main.c)
 target_link_libraries(Main db)
 
-add_executable(Test Tasks/Test.c )
+add_executable(Test Tasks/Test.c)
 target_link_libraries(Test db)
 
 # ---------------- Tests ---------------- #

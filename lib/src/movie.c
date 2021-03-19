@@ -65,22 +65,28 @@ Movie *movie_init(char *title, char *year, char *actor, char *actress, char *dir
 }
 
 
-char *ll_getValue(Movie *movie, char *key) {
+/* ============================== COMPLEMENTARY ========================= */
+
+char *node_get(Movie *movie, char *key) {
+	if (!movie) {
+		return EXCEPTION_NEW(INVALID_POINTER), (char *) NULL;
+	}
+	
 	char *value = NULL;
 	
-	if (strcmp(key, "title")) {
+	if (!strcmp(key, "title")) {
 		value = movie->title;
-	} else if (strcmp(key, "year")) {
+	} else if (!strcmp(key, "year")) {
 		value = movie->year;
-	} else if (strcmp(key, "actor")) {
+	} else if (!strcmp(key, "actor")) {
 		value = movie->actor;
-	} else if (strcmp(key, "actress")) {
+	} else if (!strcmp(key, "actress")) {
 		value = movie->actress;
-	} else if (strcmp(key, "director")) {
+	} else if (!strcmp(key, "director")) {
 		value = movie->director;
-	} else if (strcmp(key, "producer")) {
+	} else if (!strcmp(key, "producer")) {
 		value = movie->producer;
-	} else if (strcmp(key, "plot")) {
+	} else if (!strcmp(key, "plot")) {
 		value = movie->plot;
 	}
 	
@@ -88,10 +94,24 @@ char *ll_getValue(Movie *movie, char *key) {
 	
 }
 
-/* ============================== List Accessories ========================= */
+Movie *node_clone(Movie *movie) {
+	
+	if (!movie) {
+		return EXCEPTION_NEW(INVALID_POINTER), (Movie *) NULL;
+	}
+	
+	Movie *clone = movie_init(movie->title, movie->year,
+	                          movie->actor, movie->actress,
+	                          movie->director, movie->producer, movie->plot);
+	
+	return clone;
+}
 
-
-int ll_freeData(Movie *movie) {
+int node_destroy(Movie *movie) {
+	if (!movie) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
+	
 	free(movie->title);
 	free(movie->year);
 	free(movie->actor);
@@ -103,14 +123,34 @@ int ll_freeData(Movie *movie) {
 	return 0;
 }
 
-int ll_printer(Movie *data) {
-	printf("Title: %s\n", data->title);
-	printf("Year: %s\n", data->year);
-	printf("Actor: %s\n", data->actor);
-	printf("Actress: %s\n", data->actress);
-	printf("Director: %s\n", data->director);
-	printf("Producer: %s\n", data->producer);
-	printf("Plot: %s\n", data->plot);
+int node_print(Movie *movie) {
+	if (!movie) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
+	
+	printf("Title: %s\n", movie->title);
+	printf("Year: %s\n", movie->year);
+	printf("Actor: %s\n", movie->actor);
+	printf("Actress: %s\n", movie->actress);
+	printf("Director: %s\n", movie->director);
+	printf("Producer: %s\n", movie->producer);
+	printf("Plot: %s\n", movie->plot);
+	return 0;
+}
+
+int node_filePrint(Movie *movie, FILE *fp) {
+	if (!movie || !fp) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
+	
+	fprintf(fp, "%s\n", movie->title);
+	fprintf(fp, "%s\n", movie->year);
+	fprintf(fp, "%s\n", movie->actor);
+	fprintf(fp, "%s\n", movie->actress);
+	fprintf(fp, "%s\n", movie->director);
+	fprintf(fp, "%s\n", movie->producer);
+	fprintf(fp, "%s\n", movie->plot);
+	
 	return 0;
 }
 

@@ -25,8 +25,7 @@
  * Creating a separate node type was initiated keeping in mind of extending
  * it to generic type in future.
  */
-typedef Movie *node_t;
-
+//typedef Movie *node_t;
 
 /**
  * Node is a core data structure which holds data and pointers to its neighboring nodes.
@@ -219,7 +218,7 @@ LinkedList *ll_init();
  *
  * ~~~
  *
- * @see ll_set() ll_init() ll_append() ll_destroy() ll_printer()
+ * @see ll_set() ll_init() ll_append() ll_destroy() node_print()
  */
 node_t ll_get(LinkedList *ll, int index);
 
@@ -290,7 +289,6 @@ node_t ll_get(LinkedList *ll, int index);
  * @see ll_append() ll_destroy() ll_traverse()
  */
 int ll_forEach(LinkedList *ll, int (*callback)(node_t));
-
 
 /* ============================== CAPACITY ========================= */
 
@@ -692,6 +690,29 @@ int ll_set(LinkedList *ll, int index, node_t newData);
  */
 int ll_destroy(LinkedList *ll);
 
+/* ============================== NODE HELPERS ========================= */
+
+/**
+ *
+ * @param movie
+ * @return
+ */
+char *node_get(node_t movie, char *key);
+
+/**
+ *
+ * @param movie
+ * @return
+ */
+node_t node_clone(node_t movie);
+
+/**
+ *
+ * @param movie
+ * @return
+ */
+int node_destroy(node_t movie);
+
 
 /* ============================== UTILITY ========================= */
 
@@ -701,7 +722,7 @@ int ll_destroy(LinkedList *ll);
  *
  * <p>
  * ll_traverse is a minimal utility function to print the elements of the list.
- * It is implemented using ll_forEach() and another utility function ll_printer().
+ * It is implemented using ll_forEach() and another utility function node_print().
  * It is recommended that users should make their own ll_traverse function
  * for customization and flexibility.
  *
@@ -745,32 +766,19 @@ int ll_destroy(LinkedList *ll);
  *
  * ~~~
  *
- * @see ll_printer() ll_forEach()
+ * @see node_print() ll_forEach()
  */
 int ll_traverse(LinkedList *ll);
 
-/**
- *
- * @param data
- * @return
- */
-int ll_freeData(node_t data);
-
-/**
- *
- * @param data
- * @return
- */
-char *ll_getValue(node_t data, char *key);
 
 /**
  * Prints out the data supplied to the default output stream with a trailing whitespace.
  *
  * <p>
- * ll_printer is a minimal callback function for ll_traverse function.
+ * node_print is a minimal callback function for ll_traverse function.
  *
- * @param data Data to be printed to the default output stream
- * It is recommended that users should make their own ll_printer function
+ * @param movie Data to be printed to the default output stream
+ * It is recommended that users should make their own node_print function
  * for customization and flexibility.
  *
  * @return
@@ -781,7 +789,8 @@ char *ll_getValue(node_t data, char *key);
  *
  * @see ll_traverse()
  */
-int ll_printer(node_t data);
+int node_print(node_t movie);
 
+int node_filePrint(node_t data, FILE *fp);
 
 #endif //LINKEDLIST_NODE_H

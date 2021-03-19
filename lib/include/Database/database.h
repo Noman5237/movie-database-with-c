@@ -4,10 +4,10 @@
  * @date: 3/17/2021; 11:08 PM
  */
 
-#ifndef ASSIGNMENT_DATABASE_H
-#define ASSIGNMENT_DATABASE_H
+#ifndef DATABASE_H
+#define DATABASE_H
 
-#include <DataStruct/node.h>
+#include <Database/queryParser.h>
 
 typedef struct Database {
 	char *dbName;
@@ -30,4 +30,4 @@ int db_export(DB *db, char *pathToOutputDir);
 
 DB *db_import(char *filePath);
 
-#endif //ASSIGNMENT_DATABASE_H
+#endif //DATABASE_H

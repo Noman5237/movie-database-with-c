@@ -51,6 +51,9 @@ int defaultExceptionHandler(int errorCode) {
 			case FILE_READ_ERROR:
 				printf("Provided file cannot be read maybe because the path doesn't exist.");
 				break;
+			case SYNTAX_ERROR:
+				printf("Syntax error in query expression.");
+				break;
 			default:
 				printf("Error is not a fault of our knowledge,"
 				       " but a mistake of our judgment giving assent to that which is not true.");

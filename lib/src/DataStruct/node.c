@@ -76,7 +76,6 @@ int ll_forEach(LinkedList *ll, int (*callback)(node_t)) {
 	return 0;
 }
 
-
 /* ============================== CAPACITY ========================= */
 
 
@@ -297,7 +296,7 @@ int ll_destroy(LinkedList *ll) {
 		// Although at the end of the loop next will point to freed address
 		// Because the loop always terminates by following condition
 		for (int i = 0; i < ll->_size; ++i, node = next, next = next->next) {
-			ll_freeData(node->data);
+			node_destroy(node->data);
 		}
 	}
 	
@@ -314,7 +313,7 @@ int ll_traverse(LinkedList *ll) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
 	
-	ll_forEach(ll, ll_printer);
+	ll_forEach(ll, node_print);
 	printf("\n");
 	
 	return 0;

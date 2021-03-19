@@ -4,8 +4,8 @@
  * @date: 3/17/2021; 4:36 PM
  */
 
-#ifndef ASSIGNMENT_MOVIE_H
-#define ASSIGNMENT_MOVIE_H
+#ifndef MOVIE_H
+#define MOVIE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,7 +23,9 @@ typedef struct Movie {
 	
 } Movie;
 
+typedef Movie *node_t;
+
 
 Movie *movie_init(char *title, char *year, char *actor, char *actress, char *director, char *producer, char *plot);
 
-#endif //ASSIGNMENT_MOVIE_H
+#endif //MOVIE_H
