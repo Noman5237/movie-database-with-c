@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('exception_8c.html',''); initResizable(
 Include dependency graph for exception.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="exception_8c__incl.png" border="0" usemap="#alib_2src_2exception_8c" alt=""/></div>
-<map name="lib_2src_2exception_8c" id="alib_2src_2exception_8c">
+<map name="lib_2src_2exception_8c" id="lib_2src_2exception_8c">
 <area shape="rect" title=" " alt="" coords="15,5,143,32"/>
 <area shape="rect" href="exception_8h.html" title=" " alt="" coords="34,80,123,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,67,181"/>
@@ -255,18 +255,24 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85">OUT_OF_MEMORY</a>:</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                printf(<span class="stringliteral">&quot;Probably primary memory allocated for this program is full.&quot;</span>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                printf(<span class="stringliteral">&quot;Error is not a fault of our knowledge,&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                       <span class="stringliteral">&quot; but a mistake of our judgment giving assent to that which is not true.&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64">defaultExceptionHandlerFatality</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056abc27a6b909296003973e169faf52f52d">FILE_NOT_FOUND</a>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                printf(<span class="stringliteral">&quot;Provided file cannot be read maybe because the path doesn&#39;t exist.&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a5d594af14177857fc7661d03eda0baea">SYNTAX_ERROR</a>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                printf(<span class="stringliteral">&quot;Syntax error in query expression.&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                printf(<span class="stringliteral">&quot;Error is not a fault of our knowledge,&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                       <span class="stringliteral">&quot; but a mistake of our judgment giving assent to that which is not true.&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64">defaultExceptionHandlerFatality</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -295,10 +301,10 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="exception_8h.html#afdc3d17868b5b001b76bb6d9f05ca0ae" title="Default exception handler for the library functions.">defaultExceptionHandler()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="exception_8c_source.html#l00065">65</a> of file <a class="el" href="exception_8c_source.html">exception.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                      {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64">defaultExceptionHandlerFatality</a> = fatality;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="exception_8c_source.html#l00071">71</a> of file <a class="el" href="exception_8c_source.html">exception.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                      {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64">defaultExceptionHandlerFatality</a> = fatality;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,14 +329,16 @@ Variables</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aexception_8h_html_a569074caf3669c9df5d90229b905a13cace3e26676763569084c86b8c3b67d601"><div class="ttname"><a href="exception_8h.html#a569074caf3669c9df5d90229b905a13cace3e26676763569084c86b8c3b67d601">VERBOSE</a></div><div class="ttdeci">@ VERBOSE</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00032">exception.h:32</a></div></div>
+<div class="ttc" id="aexception_8h_html_a569074caf3669c9df5d90229b905a13cace3e26676763569084c86b8c3b67d601"><div class="ttname"><a href="exception_8h.html#a569074caf3669c9df5d90229b905a13cace3e26676763569084c86b8c3b67d601">VERBOSE</a></div><div class="ttdeci">@ VERBOSE</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00035">exception.h:35</a></div></div>
 <div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056">errorCode</a></div><div class="ttdeci">errorCode</div><div class="ttdoc">Currently supported exception types by defaultExceptionHandler().</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00019">exception.h:19</a></div></div>
+<div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056abc27a6b909296003973e169faf52f52d"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056abc27a6b909296003973e169faf52f52d">FILE_NOT_FOUND</a></div><div class="ttdeci">@ FILE_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00024">exception.h:24</a></div></div>
+<div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056a5d594af14177857fc7661d03eda0baea"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a5d594af14177857fc7661d03eda0baea">SYNTAX_ERROR</a></div><div class="ttdeci">@ SYNTAX_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00026">exception.h:26</a></div></div>
 <div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056a038eb674e48e295d5955bd52894b2a5b"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a038eb674e48e295d5955bd52894b2a5b">INVALID_POINTER</a></div><div class="ttdeci">@ INVALID_POINTER</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00020">exception.h:20</a></div></div>
 <div class="ttc" id="aexception_8c_html_aedf0905cdee8f96c2a912fed32f89d64"><div class="ttname"><a href="exception_8c.html#aedf0905cdee8f96c2a912fed32f89d64">defaultExceptionHandlerFatality</a></div><div class="ttdeci">int defaultExceptionHandlerFatality</div><div class="ttdoc">Fatality Behaviour for defaultExceptionHandler()</div><div class="ttdef"><b>Definition:</b> <a href="exception_8c_source.html#l00033">exception.c:33</a></div></div>
-<div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85">OUT_OF_MEMORY</a></div><div class="ttdeci">@ OUT_OF_MEMORY</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00024">exception.h:23</a></div></div>
+<div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85">OUT_OF_MEMORY</a></div><div class="ttdeci">@ OUT_OF_MEMORY</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00023">exception.h:23</a></div></div>
 <div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056a5f14ce6a9cf7f9031d612a7b65d95184"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a5f14ce6a9cf7f9031d612a7b65d95184">CALLBACK_ERROR</a></div><div class="ttdeci">@ CALLBACK_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00021">exception.h:21</a></div></div>
 <div class="ttc" id="aexception_8h_html_ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604"><div class="ttname"><a href="exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604">INDEX_OUT_OF_BOUNDS</a></div><div class="ttdeci">@ INDEX_OUT_OF_BOUNDS</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00022">exception.h:22</a></div></div>
-<div class="ttc" id="aexception_8h_html_a569074caf3669c9df5d90229b905a13ca651d8a47a6976d6fe05c0e03fb4cd2d0"><div class="ttname"><a href="exception_8h.html#a569074caf3669c9df5d90229b905a13ca651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a></div><div class="ttdeci">@ FATAL</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00031">exception.h:31</a></div></div>
+<div class="ttc" id="aexception_8h_html_a569074caf3669c9df5d90229b905a13ca651d8a47a6976d6fe05c0e03fb4cd2d0"><div class="ttname"><a href="exception_8h.html#a569074caf3669c9df5d90229b905a13ca651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a></div><div class="ttdeci">@ FATAL</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00034">exception.h:34</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

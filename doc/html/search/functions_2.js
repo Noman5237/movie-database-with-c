@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['freedata_68',['freeData',['../node_8h.html#adf3981dd4943150c04821344fd290e5f',1,'freeData(node_t movie):&#160;node.h'],['../movie_8c.html#abd479a8cead0c91f0f0a742e95918214',1,'freeData(Movie *movie):&#160;movie.c']]]
+  ['exception_5fnew_125',['exception_new',['../exception_8h.html#a6475a25f85aa6a335a98eb9b15168901',1,'exception_new(int errorCode, const char *file, int line, int(*handler)(int)):&#160;exception.c'],['../exception_8c.html#a6475a25f85aa6a335a98eb9b15168901',1,'exception_new(int errorCode, const char *file, int line, int(*handler)(int)):&#160;exception.c']]]
 ];

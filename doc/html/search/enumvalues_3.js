@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['out_5fof_5fmemory_108',['OUT_OF_MEMORY',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85',1,'exception.h']]]
+  ['index_5fout_5fof_5fbounds_185',['INDEX_OUT_OF_BOUNDS',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604',1,'exception.h']]],
+  ['invalid_5fpointer_186',['INVALID_POINTER',['../exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a038eb674e48e295d5955bd52894b2a5b',1,'exception.h']]]
 ];

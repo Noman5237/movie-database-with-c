@@ -2,7 +2,6 @@ var node_8h =
 [
     [ "Node", "struct_node.html", "struct_node" ],
     [ "LinkedList", "struct_linked_list.html", "struct_linked_list" ],
-    [ "node_t", "node_8h.html#a8eb666b976b8b6895ab0a84ab9cc3f65", null ],
     [ "Node", "node_8h.html#a3b09f37e675bcd48a01bf22155996872", null ],
     [ "LinkedList", "node_8h.html#a44ddc92df57836b0340ed4213598da2c", null ],
     [ "LList", "node_8h.html#ab4a54253580958d122b7ddb2ef770fed", null ],
@@ -17,7 +16,11 @@ var node_8h =
     [ "ll_erase", "node_8h.html#a9feac2e8f03d8ed0b6d49c047fbcf65d", null ],
     [ "ll_set", "node_8h.html#a928b86515a1d04f6f53cfc21a0980699", null ],
     [ "ll_destroy", "node_8h.html#aaa3ee4e0686089be9dc3a6e0559ca350", null ],
+    [ "node_get", "node_8h.html#a14ee95f63c84982e5f239b19d6fc7e1f", null ],
+    [ "node_clone", "node_8h.html#a89549168122f7154af51cf9fbb66196d", null ],
+    [ "node_destroy", "node_8h.html#af25d01b747425988361765139d0ee3e3", null ],
     [ "ll_traverse", "node_8h.html#a462b1f7574d9cb16d79795c175503720", null ],
-    [ "freeData", "node_8h.html#adf3981dd4943150c04821344fd290e5f", null ],
-    [ "printer", "node_8h.html#a6a58e3e799ad6e0fa8099418772c9ec8", null ]
+    [ "node_print", "node_8h.html#a5342e82cf3727643afff3c6b1d8121ae", null ],
+    [ "node_fileWrite", "node_8h.html#af849aa21719f45efbaa20d69ecd671b8", null ],
+    [ "node_fileRead", "node_8h.html#aaed7acf028f8c5a2720119039fcd7d31", null ]
 ];

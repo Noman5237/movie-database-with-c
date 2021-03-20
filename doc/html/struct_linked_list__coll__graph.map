@@ -1,5 +1,5 @@
 <map id="LinkedList" name="LinkedList">
 <area shape="rect" id="node1" title="Linked List is a collection of nodes accessed by a single Head Node pointer." alt="" coords="5,187,87,213"/>
-<area shape="rect" id="node2" href="$struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes." alt="" coords="20,96,72,123"/>
+<area shape="rect" id="node2" href="$struct_node.html" title="Linked List Nodes contains data which are of by default integer types." alt="" coords="20,96,72,123"/>
 <area shape="rect" id="node3" href="$struct_movie.html" title=" " alt="" coords="19,5,73,32"/>
 </map>

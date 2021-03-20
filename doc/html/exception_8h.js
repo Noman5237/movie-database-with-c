@@ -5,7 +5,10 @@ var exception_8h =
       [ "INVALID_POINTER", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a038eb674e48e295d5955bd52894b2a5b", null ],
       [ "CALLBACK_ERROR", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a5f14ce6a9cf7f9031d612a7b65d95184", null ],
       [ "INDEX_OUT_OF_BOUNDS", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a03b04e5afd1ab8f681368d57dca39604", null ],
-      [ "OUT_OF_MEMORY", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85", null ]
+      [ "OUT_OF_MEMORY", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ac9a7e95f8dd5507c2dbd1fb466ec9a85", null ],
+      [ "FILE_NOT_FOUND", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056abc27a6b909296003973e169faf52f52d", null ],
+      [ "FILE_READ_ERROR_EOF", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056ab68ffa4c862a2cf681937890eb67cbbe", null ],
+      [ "SYNTAX_ERROR", "exception_8h.html#ab19a8e0fe3ea0ea5c7259400cb389056a5d594af14177857fc7661d03eda0baea", null ]
     ] ],
     [ "exceptionResponder", "exception_8h.html#a569074caf3669c9df5d90229b905a13c", [
       [ "SILENT", "exception_8h.html#a569074caf3669c9df5d90229b905a13cab9de27525b1cd54c353f4ed868a6cb26", null ],

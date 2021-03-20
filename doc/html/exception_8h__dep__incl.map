@@ -1,8 +1,12 @@
 <map id="lib/include/exception.h" name="lib/include/exception.h">
-<area shape="rect" id="node1" title=" " alt="" coords="67,5,218,32"/>
-<area shape="rect" id="node2" href="$node_8h.html" title=" " alt="" coords="49,155,196,196"/>
-<area shape="rect" id="node3" href="$node_8c.html" title=" " alt="" coords="5,244,128,285"/>
-<area shape="rect" id="node4" href="$movie_8h.html" title=" " alt="" coords="129,80,257,107"/>
-<area shape="rect" id="node6" href="$exception_8c.html" title=" " alt="" coords="281,80,409,107"/>
-<area shape="rect" id="node5" href="$movie_8c.html" title=" " alt="" coords="221,162,326,189"/>
+<area shape="rect" id="node1" title=" " alt="" coords="122,5,273,32"/>
+<area shape="rect" id="node2" href="$node_8h.html" title=" " alt="" coords="104,155,251,196"/>
+<area shape="rect" id="node7" href="$node_8c.html" title=" " alt="" coords="5,244,128,285"/>
+<area shape="rect" id="node8" href="$movie_8h.html" title=" " alt="" coords="184,80,312,107"/>
+<area shape="rect" id="node10" href="$exception_8c.html" title=" " alt="" coords="336,80,464,107"/>
+<area shape="rect" id="node3" href="$query_parser_8h.html" title=" " alt="" coords="152,244,291,285"/>
+<area shape="rect" id="node4" href="$database_8h.html" title=" " alt="" coords="55,333,193,375"/>
+<area shape="rect" id="node6" href="$query_parser_8c.html" title=" " alt="" coords="218,341,419,367"/>
+<area shape="rect" id="node5" href="$database_8c.html" title=" " alt="" coords="32,423,216,449"/>
+<area shape="rect" id="node9" href="$movie_8c.html" title=" " alt="" coords="275,162,381,189"/>
 </map>

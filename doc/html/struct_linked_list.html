@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('struct_linked_list.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>Linked List is a collection of nodes accessed by a single <b>Head <a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a></b> pointer.  
+<p>Linked List is a collection of nodes accessed by a single <b>Head <a class="el" href="struct_node.html" title="Linked List Nodes contains data which are of by default integer types.">Node</a></b> pointer.  
  <a href="struct_linked_list.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="node_8h_source.html">node.h</a>&gt;</code></p>
@@ -110,7 +110,7 @@ Collaboration diagram for LinkedList:</div>
 <div class="center"><img src="struct_linked_list__coll__graph.png" border="0" usemap="#a_linked_list_coll__map" alt="Collaboration graph"/></div>
 <map name="_linked_list_coll__map" id="a_linked_list_coll__map">
 <area shape="rect" title="Linked List is a collection of nodes accessed by a single Head Node pointer." alt="" coords="5,187,87,213"/>
-<area shape="rect" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes." alt="" coords="20,96,72,123"/>
+<area shape="rect" href="struct_node.html" title="Linked List Nodes contains data which are of by default integer types." alt="" coords="20,96,72,123"/>
 <area shape="rect" href="struct_movie.html" title=" " alt="" coords="19,5,73,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -123,7 +123,7 @@ Data Fields</h2></td></tr>
 <tr class="separator:a0eae760a60f678f6a5bf237720973cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Linked List is a collection of nodes accessed by a single <b>Head <a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a></b> pointer. </p>
+<div class="textblock"><p>Linked List is a collection of nodes accessed by a single <b>Head <a class="el" href="struct_node.html" title="Linked List Nodes contains data which are of by default integer types.">Node</a></b> pointer. </p>
 <p>Conventionally this Linked List is more commonly known as <b>Circular Doubly Linked List</b> since it is made up of <b>Doubly</b> nodes and by design the modifier functions facilitate <b>Circular</b> list.</p>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Design Preview</h3>
@@ -147,12 +147,12 @@ Design Preview</h3>
 <div class="line">| +---------------------------------------------------+ |</div>
 <div class="line">|                                                       |</div>
 <div class="line">+-------------------------------------------------------+</div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Instead of declaring pointer to pointer to <a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a> Head as Linked List, Linked List is a specially designed object with ll_size and node head pointer because of extensibility, flexibility and its similarity to unanimous one dimensional dynamic storage data structures. The structure contains ll_size variable for optimization purposes.</dd></dl>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Instead of declaring pointer to pointer to <a class="el" href="struct_node.html" title="Linked List Nodes contains data which are of by default integer types.">Node</a> Head as Linked List, Linked List is a specially designed object with ll_size and node head pointer because of extensibility, flexibility and its similarity to unanimous one dimensional dynamic storage data structures. The structure contains ll_size variable for optimization purposes.</dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>Do not modify the ll_size of head of the Linked List unless you know what you doing and are solely responsible for unwanted and weird behaviour of your programs.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Any type of <b>modification</b> of Linked List without the supplied modifier functions is not intended and the supplied software is not responsible for any fatal or non crashes and unwanted and weird behaviour of the user programs.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_node.html" title="Node is a core data structure which holds data and pointers to its neighboring nodes.">Node</a> <a class="el" href="node_8h.html#aca149afbffff1ce8761a3dfc0109a947" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated ...">ll_init()</a> <a class="el" href="node_8h.html#ae02cb6b9770253b4db327750bf694d2b" title="Adds new data to the end of the provided list.">ll_append()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_node.html" title="Linked List Nodes contains data which are of by default integer types.">Node</a> <a class="el" href="node_8h.html#aca149afbffff1ce8761a3dfc0109a947" title="Creates a new ll_empty Doubly Circular Linked List on heap and returns a pointer to the instantiated ...">ll_init()</a> <a class="el" href="node_8h.html#ae02cb6b9770253b4db327750bf694d2b" title="Adds new data to the end of the provided list.">ll_append()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00104">104</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00103">103</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="aaa6c8c862a2c0bc18c802314cc58961d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa6c8c862a2c0bc18c802314cc58961d">&#9670;&nbsp;</a></span>_size</h2>
@@ -166,7 +166,7 @@ Design Preview</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00105">105</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00104">104</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -182,13 +182,13 @@ Design Preview</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00106">106</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="node_8h_source.html#l00105">105</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anode_8h_html_a35c1fece7d3ade3d38b20cc83fd82b68"><div class="ttname"><a href="node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68">ll_size</a></div><div class="ttdeci">int ll_size(LinkedList *ll)</div><div class="ttdoc">Returns the ll_size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00083">node.c:83</a></div></div>
+<div class="ttc" id="anode_8h_html_a35c1fece7d3ade3d38b20cc83fd82b68"><div class="ttname"><a href="node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68">ll_size</a></div><div class="ttdeci">int ll_size(LinkedList *ll)</div><div class="ttdoc">Returns the ll_size of provided list.</div><div class="ttdef"><b>Definition:</b> <a href="node_8c_source.html#l00082">node.c:82</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
