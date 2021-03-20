@@ -14,8 +14,8 @@
 
 #define MOVIE_KEY_CHARS_MAX 16
 #define MOVIE_VAL_CHARS_MAX 2048
-#define NODE_COLS 7
-#define NODE_COL_CHARS_MAX 16
+#define NODE_COLS 8
+#define NODE_COL_CHARS_MAX 20
 
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)

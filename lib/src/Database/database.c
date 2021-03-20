@@ -111,8 +111,12 @@ int db_print(DB *db) {
 	printf("|");
 	centerText(db->dbName, NODE_COLS * (NODE_COL_CHARS_MAX + 1) - 1);
 	printf("|\n");
-	drawGrid(NODE_COLS, NODE_COL_CHARS_MAX);
 	
+	/* ------------------ Header ------------------ */
+	
+	drawGrid(NODE_COLS, NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("id", NODE_COL_CHARS_MAX);
 	printf("|");
 	centerText("title", NODE_COL_CHARS_MAX);
 	printf("|");
@@ -132,7 +136,11 @@ int db_print(DB *db) {
 	
 	// print the records
 	int dbSize = ll_size(db->list);
+	char indexStr[8];
 	for (int i = 0; i < dbSize; i++) {
+		printf("|");
+		itoa(i, indexStr, 10);
+		printMin(indexStr, NODE_COL_CHARS_MAX);
 		node_print(ll_get(db->list, i));
 		printf("\n");
 	}
