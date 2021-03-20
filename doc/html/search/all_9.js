@@ -1,18 +1,18 @@
 var searchData=
 [
-  ['linkedlist_42',['LinkedList',['../struct_linked_list.html',1,'LinkedList'],['../node_8h.html#a44ddc92df57836b0340ed4213598da2c',1,'LinkedList():&#160;node.h']]],
-  ['list_43',['list',['../struct_database.html#ac8bc443bfe687cc4188a405a3e7a0b81',1,'Database']]],
-  ['ll_44',['LL',['../node_8h.html#a9ef98d8bc9362571c64645bcafab8da6',1,'node.h']]],
-  ['ll_5fappend_45',['ll_append',['../node_8h.html#ae02cb6b9770253b4db327750bf694d2b',1,'ll_append(LinkedList *ll, node_t newData):&#160;node.c'],['../node_8c.html#ae02cb6b9770253b4db327750bf694d2b',1,'ll_append(LinkedList *ll, node_t newData):&#160;node.c']]],
-  ['ll_5fdestroy_46',['ll_destroy',['../node_8h.html#aaa3ee4e0686089be9dc3a6e0559ca350',1,'ll_destroy(LinkedList *ll):&#160;node.c'],['../node_8c.html#aaa3ee4e0686089be9dc3a6e0559ca350',1,'ll_destroy(LinkedList *ll):&#160;node.c']]],
-  ['ll_5fempty_47',['ll_empty',['../node_8h.html#ade0b00ebdbb6c7fdab32a4966339b7db',1,'ll_empty(LinkedList *ll):&#160;node.c'],['../node_8c.html#ade0b00ebdbb6c7fdab32a4966339b7db',1,'ll_empty(LinkedList *ll):&#160;node.c']]],
-  ['ll_5ferase_48',['ll_erase',['../node_8h.html#a9feac2e8f03d8ed0b6d49c047fbcf65d',1,'ll_erase(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a9feac2e8f03d8ed0b6d49c047fbcf65d',1,'ll_erase(LinkedList *ll, int index):&#160;node.c']]],
-  ['ll_5fforeach_49',['ll_forEach',['../node_8h.html#add41f788e88e16a992411e3716d53f64',1,'ll_forEach(LinkedList *ll, int(*callback)(node_t)):&#160;node.c'],['../node_8c.html#add41f788e88e16a992411e3716d53f64',1,'ll_forEach(LinkedList *ll, int(*callback)(node_t)):&#160;node.c']]],
-  ['ll_5fget_50',['ll_get',['../node_8h.html#a1aacf33605a3699ca1df74a14bead4eb',1,'ll_get(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a1aacf33605a3699ca1df74a14bead4eb',1,'ll_get(LinkedList *ll, int index):&#160;node.c']]],
-  ['ll_5finit_51',['ll_init',['../node_8h.html#aca149afbffff1ce8761a3dfc0109a947',1,'ll_init():&#160;node.c'],['../node_8c.html#aca149afbffff1ce8761a3dfc0109a947',1,'ll_init():&#160;node.c']]],
-  ['ll_5finsert_52',['ll_insert',['../node_8h.html#a7babf11c31eaa0d3e36f738d9a80ab83',1,'ll_insert(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a7babf11c31eaa0d3e36f738d9a80ab83',1,'ll_insert(LinkedList *ll, int index, node_t newData):&#160;node.c']]],
-  ['ll_5fset_53',['ll_set',['../node_8h.html#a928b86515a1d04f6f53cfc21a0980699',1,'ll_set(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a928b86515a1d04f6f53cfc21a0980699',1,'ll_set(LinkedList *ll, int index, node_t newData):&#160;node.c']]],
-  ['ll_5fsize_54',['ll_size',['../node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68',1,'ll_size(LinkedList *ll):&#160;node.c'],['../node_8c.html#a35c1fece7d3ade3d38b20cc83fd82b68',1,'ll_size(LinkedList *ll):&#160;node.c']]],
-  ['ll_5ftraverse_55',['ll_traverse',['../node_8h.html#a462b1f7574d9cb16d79795c175503720',1,'ll_traverse(LinkedList *ll):&#160;node.c'],['../node_8c.html#a462b1f7574d9cb16d79795c175503720',1,'ll_traverse(LinkedList *ll):&#160;node.c']]],
-  ['llist_56',['LList',['../node_8h.html#ab4a54253580958d122b7ddb2ef770fed',1,'node.h']]]
+  ['linkedlist_44',['LinkedList',['../struct_linked_list.html',1,'LinkedList'],['../node_8h.html#a44ddc92df57836b0340ed4213598da2c',1,'LinkedList():&#160;node.h']]],
+  ['list_45',['list',['../struct_database.html#ac8bc443bfe687cc4188a405a3e7a0b81',1,'Database']]],
+  ['ll_46',['LL',['../node_8h.html#a9ef98d8bc9362571c64645bcafab8da6',1,'node.h']]],
+  ['ll_5fappend_47',['ll_append',['../node_8h.html#ae02cb6b9770253b4db327750bf694d2b',1,'ll_append(LinkedList *ll, node_t newData):&#160;node.c'],['../node_8c.html#ae02cb6b9770253b4db327750bf694d2b',1,'ll_append(LinkedList *ll, node_t newData):&#160;node.c']]],
+  ['ll_5fdestroy_48',['ll_destroy',['../node_8h.html#aaa3ee4e0686089be9dc3a6e0559ca350',1,'ll_destroy(LinkedList *ll):&#160;node.c'],['../node_8c.html#aaa3ee4e0686089be9dc3a6e0559ca350',1,'ll_destroy(LinkedList *ll):&#160;node.c']]],
+  ['ll_5fempty_49',['ll_empty',['../node_8h.html#ade0b00ebdbb6c7fdab32a4966339b7db',1,'ll_empty(LinkedList *ll):&#160;node.c'],['../node_8c.html#ade0b00ebdbb6c7fdab32a4966339b7db',1,'ll_empty(LinkedList *ll):&#160;node.c']]],
+  ['ll_5ferase_50',['ll_erase',['../node_8h.html#a9feac2e8f03d8ed0b6d49c047fbcf65d',1,'ll_erase(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a9feac2e8f03d8ed0b6d49c047fbcf65d',1,'ll_erase(LinkedList *ll, int index):&#160;node.c']]],
+  ['ll_5fforeach_51',['ll_forEach',['../node_8h.html#add41f788e88e16a992411e3716d53f64',1,'ll_forEach(LinkedList *ll, int(*callback)(node_t)):&#160;node.c'],['../node_8c.html#add41f788e88e16a992411e3716d53f64',1,'ll_forEach(LinkedList *ll, int(*callback)(node_t)):&#160;node.c']]],
+  ['ll_5fget_52',['ll_get',['../node_8h.html#a1aacf33605a3699ca1df74a14bead4eb',1,'ll_get(LinkedList *ll, int index):&#160;node.c'],['../node_8c.html#a1aacf33605a3699ca1df74a14bead4eb',1,'ll_get(LinkedList *ll, int index):&#160;node.c']]],
+  ['ll_5finit_53',['ll_init',['../node_8h.html#aca149afbffff1ce8761a3dfc0109a947',1,'ll_init():&#160;node.c'],['../node_8c.html#aca149afbffff1ce8761a3dfc0109a947',1,'ll_init():&#160;node.c']]],
+  ['ll_5finsert_54',['ll_insert',['../node_8h.html#a7babf11c31eaa0d3e36f738d9a80ab83',1,'ll_insert(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a7babf11c31eaa0d3e36f738d9a80ab83',1,'ll_insert(LinkedList *ll, int index, node_t newData):&#160;node.c']]],
+  ['ll_5fset_55',['ll_set',['../node_8h.html#a928b86515a1d04f6f53cfc21a0980699',1,'ll_set(LinkedList *ll, int index, node_t newData):&#160;node.c'],['../node_8c.html#a928b86515a1d04f6f53cfc21a0980699',1,'ll_set(LinkedList *ll, int index, node_t newData):&#160;node.c']]],
+  ['ll_5fsize_56',['ll_size',['../node_8h.html#a35c1fece7d3ade3d38b20cc83fd82b68',1,'ll_size(LinkedList *ll):&#160;node.c'],['../node_8c.html#a35c1fece7d3ade3d38b20cc83fd82b68',1,'ll_size(LinkedList *ll):&#160;node.c']]],
+  ['ll_5ftraverse_57',['ll_traverse',['../node_8h.html#a462b1f7574d9cb16d79795c175503720',1,'ll_traverse(LinkedList *ll):&#160;node.c'],['../node_8c.html#a462b1f7574d9cb16d79795c175503720',1,'ll_traverse(LinkedList *ll):&#160;node.c']]],
+  ['llist_58',['LList',['../node_8h.html#ab4a54253580958d122b7ddb2ef770fed',1,'node.h']]]
 ];
