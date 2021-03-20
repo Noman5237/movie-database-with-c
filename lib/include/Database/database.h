@@ -20,6 +20,18 @@ int db_add(DB *db, node_t node);
 
 int db_erase(DB *db, int index);
 
+/**
+ * Syntax of query<br>
+ * Condition: "key<Space>:<Space>`value`"<br>
+ * Multiple conditions can be merged together using &(AND) or |(OR) <br>
+ * expression syntax: "Condition1 | Condition2 & Condition3 | ... ConditionN"
+ *
+ * @param db
+ * @param queryName
+ * @param expression For simplicity expression has only one function i.e. comparing equality
+ * @return
+ */
+ 
 DB *db_query(DB *db, char *queryName, char *expression);
 
 int db_destroy(DB *db);

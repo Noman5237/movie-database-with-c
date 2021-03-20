@@ -791,6 +791,8 @@ int ll_traverse(LinkedList *ll);
  */
 int node_print(node_t movie);
 
-int node_filePrint(node_t data, FILE *fp);
+int node_fileWrite(node_t movie, FILE *fp);
+
+node_t node_fileRead(FILE *fp);
 
 #endif //LINKEDLIST_NODE_H

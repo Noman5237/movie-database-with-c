@@ -12,6 +12,12 @@
 #include <exception.h>
 #include <string.h>
 
+#define MOVIE_KEY_CHARS_MAX 16
+#define MOVIE_VAL_CHARS_MAX 2048
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
 typedef struct Movie {
 	char *title;
 	char *year;

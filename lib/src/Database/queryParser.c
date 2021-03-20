@@ -56,10 +56,13 @@ Query *query_init(char *expression) {
 	
 	conditions[0]->mode = AND;
 	int nr = 0;
-	char key[KEY_LEN_MAX], value[VAL_LEN_MAX];
+	char key[MOVIE_KEY_CHARS_MAX], value[MOVIE_VAL_CHARS_MAX];
 	for (int nc = 0; nc < noOfConditions; nc++) {
 		int nArg = 0, cnr = 0;
-		nArg = sscanf(expression + nr, "%64s : `%1024[^`\n]`%n", key, value, &cnr);
+		nArg = sscanf(expression + nr,
+		              "%"STR(MOVIE_KEY_CHARS_MAX)"s : `%"STR(MOVIE_VAL_CHARS_MAX)"[^`\n]`%n",
+		              key, value, &cnr);
+		
 		int keyLen = (int) strlen(key);
 		int valueLen = (int) strlen(value);
 		
@@ -71,7 +74,6 @@ Query *query_init(char *expression) {
 		strcpy(conditions[nc]->key, key);
 		conditions[nc]->value = malloc(sizeof(char) * (valueLen + 1));
 		strcpy(conditions[nc]->value, value);
-		conditions[nc]->value[valueLen] = '\0';
 		
 		nr += cnr;
 		while (expression[nr] == ' ') nr++;

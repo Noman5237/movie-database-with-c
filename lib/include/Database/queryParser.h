@@ -9,8 +9,6 @@
 
 #include <DataStruct/node.h>
 
-#define KEY_LEN_MAX 128
-#define VAL_LEN_MAX 2048
 
 enum conditionMode {
 	AND,
@@ -31,7 +29,11 @@ typedef struct Query {
 Condition *condition__init(char *key, char *value, int mode);
 
 int condition__check(Condition *condition, node_t data);
-
+/**
+ *
+ * @param expression
+ * @return
+ */
 Query *query_init(char *expression);
 
 int query_evaluate(Query *query, node_t data);

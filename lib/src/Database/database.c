@@ -63,15 +63,14 @@ int db_export(DB *db, char *pathToOutputDir) {
 	strcpy(outputPath, pathToOutputDir);
 	strcat(outputPath, db->dbName);
 	strcat(outputPath, ".db");
-	printf("%s\n", outputPath);
 	if (!(fp = fopen(outputPath, "wb"))) {
-		return EXCEPTION_NEW(FILE_READ_ERROR);
+		return EXCEPTION_NEW(FILE_NOT_FOUND);
 	}
 	
 	fprintf(fp, "%s\n", db->dbName);
 	int dbSize = ll_size(db->list);
 	for (int i = 0; i < dbSize; i++) {
-		node_filePrint(ll_get(db->list, i), fp);
+		node_fileWrite(ll_get(db->list, i), fp);
 	}
 	
 	return 0;
@@ -86,13 +85,17 @@ int db_show(DB *db) {
 DB *db_import(char *filePath) {
 	FILE *fp = NULL;
 	if (!(fp = fopen(filePath, "rb"))) {
-		return EXCEPTION_NEW(FILE_READ_ERROR), (DB *) NULL;
+		return EXCEPTION_NEW(FILE_NOT_FOUND), (DB *) NULL;
 	}
 	
-	DB *db = db_init("");
+	char bytes[MOVIE_VAL_CHARS_MAX];
+	fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", bytes);
+	DB *db = db_init(bytes);
 	
+	while (!feof(fp)) {
+		db_add(db, node_fileRead(fp));
+	}
 	
-
 	fclose(fp);
 	
 	return db;

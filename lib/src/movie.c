@@ -138,7 +138,7 @@ int node_print(Movie *movie) {
 	return 0;
 }
 
-int node_filePrint(Movie *movie, FILE *fp) {
+int node_fileWrite(Movie *movie, FILE *fp) {
 	if (!movie || !fp) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
@@ -154,3 +154,35 @@ int node_filePrint(Movie *movie, FILE *fp) {
 	return 0;
 }
 
+
+Movie *node_fileRead(FILE *fp) {
+	if (!fp) {
+		return EXCEPTION_NEW(INVALID_POINTER), (Movie *) NULL;
+	}
+	
+	char title[MOVIE_VAL_CHARS_MAX];
+	char year[MOVIE_VAL_CHARS_MAX];
+	char actor[MOVIE_VAL_CHARS_MAX];
+	char actress[MOVIE_VAL_CHARS_MAX];
+	char director[MOVIE_VAL_CHARS_MAX];
+	char producer[MOVIE_VAL_CHARS_MAX];
+	char plot[MOVIE_VAL_CHARS_MAX];
+	
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", title) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", year) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", actor) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", actress) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", director) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", producer) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	if (fscanf(fp, "%"STR(MOVIE_VAL_CHARS_MAX)"[^\n]\n", plot) != 1)
+		return EXCEPTION_NEW(FILE_READ_ERROR_EOF), (Movie *) NULL;
+	
+	return movie_init(title, year, actor, actress, director, producer, plot);
+	
+}
