@@ -36,7 +36,7 @@ DB *db_query(DB *db, char *queryName, char *expression);
 
 int db_destroy(DB *db);
 
-int db_show(DB *db);
+int db_print(DB *db);
 
 int db_export(DB *db, char *pathToOutputDir);
 

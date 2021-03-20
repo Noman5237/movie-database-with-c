@@ -4,6 +4,7 @@
  * @date: 3/17/2021; 11:07 PM
  */
 
+#include <utility.h>
 #include "Database/database.h"
 
 DB *db_init(char *dbName) {
@@ -76,12 +77,6 @@ int db_export(DB *db, char *pathToOutputDir) {
 	return 0;
 }
 
-int db_show(DB *db) {
-//	TODO show a fancy grid
-	printf("%s\n", db->dbName);
-	return ll_traverse(db->list);
-}
-
 DB *db_import(char *filePath) {
 	FILE *fp = NULL;
 	if (!(fp = fopen(filePath, "rb"))) {
@@ -100,3 +95,50 @@ DB *db_import(char *filePath) {
 	
 	return db;
 }
+
+int db_print(DB *db) {
+	
+	/* ------------------ Name ------------------ */
+	
+	// Top Bar
+	printf("+");
+	for (int i = 0; i < NODE_COLS * (NODE_COL_CHARS_MAX + 1) - 1; i++) {
+		printf("-");
+	}
+	printf("+\n");
+	
+	// Centered DB Name
+	printf("|");
+	centerText(db->dbName, NODE_COLS * (NODE_COL_CHARS_MAX + 1) - 1);
+	printf("|\n");
+	drawGrid(NODE_COLS, NODE_COL_CHARS_MAX);
+	
+	printf("|");
+	centerText("title", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("year", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("actor", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("actress", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("director", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("producer", NODE_COL_CHARS_MAX);
+	printf("|");
+	centerText("plot", NODE_COL_CHARS_MAX);
+	printf("|\n");
+	drawGrid(NODE_COLS, NODE_COL_CHARS_MAX);
+	
+	// print the records
+	int dbSize = ll_size(db->list);
+	for (int i = 0; i < dbSize; i++) {
+		node_print(ll_get(db->list, i));
+		printf("\n");
+	}
+	
+	drawGrid(NODE_COLS, NODE_COL_CHARS_MAX);
+	
+	return 0;
+}
+

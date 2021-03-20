@@ -5,6 +5,7 @@
  */
 
 #include <movie.h>
+#include <utility.h>
 
 Movie *movie_init(char *title, char *year, char *actor, char *actress, char *director, char *producer, char *plot) {
 	Movie *movie = (Movie *) malloc(sizeof(Movie));
@@ -127,14 +128,22 @@ int node_print(Movie *movie) {
 	if (!movie) {
 		return EXCEPTION_NEW(INVALID_POINTER);
 	}
+	printf("|");
+	printMin(movie->title, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->year, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->actor, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->actress, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->director, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->producer, NODE_COL_CHARS_MAX);
+	printf("|");
+	printMin(movie->plot, NODE_COL_CHARS_MAX);
+	printf("|");
 	
-	printf("Title: %s\n", movie->title);
-	printf("Year: %s\n", movie->year);
-	printf("Actor: %s\n", movie->actor);
-	printf("Actress: %s\n", movie->actress);
-	printf("Director: %s\n", movie->director);
-	printf("Producer: %s\n", movie->producer);
-	printf("Plot: %s\n", movie->plot);
 	return 0;
 }
 

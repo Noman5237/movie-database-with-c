@@ -22,10 +22,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/out/${CMAKE_SYSTE
 
 # ================================================== LIBRARY ================================================== #
 
+add_library(utl SHARED
+            lib/src/utility.c)
+
 # ---------------- Exception---------------- #
 add_library(excpt SHARED
             lib/src/exception.c)
 
+target_link_libraries(excpt utl)
 
 # ---------------- Data Structure ---------------- #
 add_library(dtstrct STATIC

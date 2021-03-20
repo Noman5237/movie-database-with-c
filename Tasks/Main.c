@@ -34,21 +34,21 @@ int main() {
 	db_add(db, movie_init("Stone", "2003",
 	                      "Radcliffe", "Emma Watson",
 	                      "Chris Columbus", "David Heyman",
-	                      "Late one night, Albus Dumbledore and Minerva McGonagall, professors at Hogwarts School of "
+	                      "Late one night,Albus Dumbledore and Minerva McGonagall, professors at Hogwarts School of "
 	                      "Witchcraft and Wizardry, along with the school's groundskeeper Rubeus Hagrid, deliver a recently "
 	                      "orphaned infant named Harry Potter to his only remaining relatives, the Dursleys."));
 	
 	
 	DB *sampleQuery = db_query(db, "sampleQuery", "title : `Harry Potter and the Philosopher's Stone` | year : `2003`");
-	db_show(sampleQuery);
+	db_print(sampleQuery);
 	db_export(sampleQuery, DATABASE_DIR);
 	db_destroy(sampleQuery);
 
 //	DB *onlyRadCliffe = db_query(db, "onlyRadCliffe", "actor : `Radcliffe`");
 	DB *onlyRadCliffe = db_import(DATABASE_DIR "onlyRadCliffe.db");
-	db_show(onlyRadCliffe);
+	db_print(onlyRadCliffe);
 	
-	db_show(db);
+	db_print(db);
 	db_export(db, DATABASE_DIR);
 	db_destroy(db);
 	

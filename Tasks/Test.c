@@ -9,6 +9,6 @@
 int main() {
 	DB *db = db_import(
 			"P:\\TEMP\\CoreProgramming\\CProjects\\Homework\\MovieDatabase\\resources\\database\\HarryPotterFranchise");
-	db_show(db);
+	db_print(db);
 	db_destroy(db);
 }
