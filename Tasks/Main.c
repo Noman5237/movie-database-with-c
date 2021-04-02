@@ -4,7 +4,7 @@
  */
 
 #include <Database/database.h>
-#include "Console.h"
+#include "Console.cpp"
 
 #define DATABASE_DIR "C:\\Users\\DOLPHIN\\Desktop\\Coding\\MovieDatabase\\resources\\database\\"
 
