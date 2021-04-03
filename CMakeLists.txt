@@ -9,10 +9,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall")
 # ---------------- Library Headers ---------------- #
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/include)
 
-# ---------------- Google Test ---------------- #
-add_subdirectory(lib/googletest)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/googletest/include)
-
 # ================================================== PATHS ================================================== #
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/build/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/shared)
@@ -56,6 +52,9 @@ target_link_libraries(db dtstrct)
 
 add_executable(Main Tasks/Main.c)
 target_link_libraries(Main db)
+
+add_executable(Console Tasks/Console.c)
+target_link_libraries(Console db)
 
 add_executable(Test Tasks/Test.c)
 target_link_libraries(Test db)
