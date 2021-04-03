@@ -58,7 +58,7 @@ add_executable(Main Tasks/Main.c)
 target_link_libraries(Main db)
 
 add_executable(Console Tasks/Console.cpp)
-target_link_libraries(Main db)
+target_link_libraries(Console db)
 
 add_executable(Test Tasks/Test.c)
 target_link_libraries(Test db)

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdio>
-
-
+#include <Database/database.h>
+#include <movie.h>
 using namespace std;
 
 void input();
@@ -17,10 +17,14 @@ void displayall();
 void search();
 void deleteFile();
 void editFile();
+void searchMovie();
+
+
+DB *db;
 
 int main()
 {
-
+    db = db_init((char *)"Movies");
     system ("title Movie Database Program");
     system ("cls");
     system ("color 0F");
@@ -34,16 +38,16 @@ int main()
 
     switch (choice){
         case 1:
-            input();
+            displayall();
             break;
         case 2:
-            search();
+            input();
             break;
         case 3:
             deleteFile();
             break;
         case 4:
-            editFile();
+            searchMovie();
             break;
         case 5:
             quit();
@@ -95,8 +99,6 @@ void input()
     string name, input, newName,decision;
     string title, year, actor, actress, director, producer, plot;
 
-    int age;
-    long int salary;
     ofstream newmovie("newmovie.txt", ios::app);
     ofstream movieSearch ("movieSearch.txt", ios::app);
     system("cls");
@@ -132,11 +134,26 @@ void input()
              "Director : "<<  director << "\n" <<
              "Producer : " << producer << "\n" <<
              "Brief Synopsis : " << plot << endl;
-
+    db_add(db, movie_init((char *)title.c_str(),(char *)year.c_str(),(char *)actor.c_str(),
+                          (char *)actress.c_str(),(char *)director.c_str(),(char *)producer.c_str(),(char *)plot.c_str()));
     newmovie.close();
     movieSearch.close();
     main();
 }
+void searchMovie(){
+    //DB *db = db_init("Movie Database");
+    string ch;
+    printf("Enter any expression : ");
+    cin >> ch;
+    DB *sampleQuery = db_query(db, (char *)"sampleQuery", (char *)ch.c_str());
+    db_print(sampleQuery);
+
+}
+
+
+
+
+
 void searchtitle()
 {
     ifstream movie("newmovie.txt");
@@ -369,6 +386,7 @@ void quit()
 }
 void displayall()
 {
+    /*
     ifstream movie("newmovie.txt");
     ifstream movieSearch("movieSearch.txt");
     string title, year, actor, actress, director, producer, plot;
@@ -403,7 +421,8 @@ void displayall()
 
     cin.get();
     main();
-
+   */
+    db_print(db);
 }
 void search()
 {
@@ -426,30 +445,14 @@ void search()
 
     switch (choice2){
         case 1:
-            searchtitle();
-            break;
+            displayall();
         case 2:
-            searchyear();
-            break;
-        case 3:
-            searchleadactor();
-            break;
-        case 4:
-            searchleadactress();
-            break;
-        case 5:
-            searchdirector();
-            break;
-        case 6:
-            searchproducer();
-            break;
-        case 7:
             displayall();
             break;
-        case 8:
+        case 3:
             main();
             break;
-        case 9:
+        case 4:
             quit();
             break;
     }

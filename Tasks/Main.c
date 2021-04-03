@@ -9,7 +9,7 @@
 #define DATABASE_DIR "C:\\Users\\DOLPHIN\\Desktop\\Coding\\MovieDatabase\\resources\\database\\"
 
 int main() {
-	DB *db = db_init("Movie Database");
+	DB *db = db_init("Movies");
 	/*db_add(db, movie_init("Philosopher's Stone", "2001",
 	                      "Daniel Radcliffe", "Emma Watson",
 	                      "Chris Columbus", "David Heyman",
