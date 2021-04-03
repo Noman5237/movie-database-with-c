@@ -1,16 +1,16 @@
 /**
  * @file: MovieDatabase.c
- * @author: Anonyman637
  * @date: 3/17/2021; 5:30 PM
  */
 
 #include <Database/database.h>
+#include "Console.h"
 
-#define DATABASE_DIR "P:\\TEMP\\CoreProgramming\\CProjects\\Homework\\MovieDatabase\\resources\\database\\"
+#define DATABASE_DIR "C:\\Users\\DOLPHIN\\Desktop\\Coding\\MovieDatabase\\resources\\database\\"
 
 int main() {
-	DB *db = db_init("Harry Potter Franchise");
-	db_add(db, movie_init("Philosopher's Stone", "2001",
+	DB *db = db_init("Movie Database");
+	/*db_add(db, movie_init("Philosopher's Stone", "2001",
 	                      "Daniel Radcliffe", "Emma Watson",
 	                      "Chris Columbus", "David Heyman",
 	                      "Late one night, Albus Dumbledore and Minerva McGonagall, professors at Hogwarts School of "
@@ -37,8 +37,11 @@ int main() {
 	                      "Late one night,Albus Dumbledore and Minerva McGonagall, professors at Hogwarts School of "
 	                      "Witchcraft and Wizardry, along with the school's groundskeeper Rubeus Hagrid, deliver a recently "
 	                      "orphaned infant named Harry Potter to his only remaining relatives, the Dursleys."));
-	
-	
+	*/
+
+
+
+
 	DB *sampleQuery = db_query(db, "sampleQuery", "title : `Harry Potter and the Philosopher's Stone` | year : `2003`");
 	db_print(sampleQuery);
 	db_export(sampleQuery, DATABASE_DIR);
@@ -51,6 +54,8 @@ int main() {
 	db_print(db);
 	db_export(db, DATABASE_DIR);
 	db_destroy(db);
+
+
 	
 	return 0;
 }

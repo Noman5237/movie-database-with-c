@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.17)
 project(Assignment)
 
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ")
 
 # ================================================== INCLUDES ================================================== #
 
@@ -54,7 +54,7 @@ target_link_libraries(db dtstrct)
 
 # ---------------- Tasks ---------------- #
 
-add_executable(Main Tasks/Main.c)
+add_executable(Main Tasks/Main.c Tasks/Console.h)
 target_link_libraries(Main db)
 
 add_executable(Test Tasks/Test.c)

@@ -1,6 +1,5 @@
 /**
  * @file: ImportData.c
- * @author: Anonyman637
  * @date: 3/18/2021; 2:51 AM
  */
 
