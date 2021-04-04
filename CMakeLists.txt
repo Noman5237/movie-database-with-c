@@ -57,7 +57,11 @@ target_link_libraries(db dtstrct)
 
 # ---------------- Tasks ---------------- #
 
-add_compile_definitions(DATABASE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources/database/")
+if (${CMAKE_VERSION} STRLESS 3.17)
+	add_definitions(-DDATABASE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources/database/")
+else ()
+	add_compile_definitions(DATABASE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources/database/")
+endif ()
 add_executable(Main Tasks/Main.c)
 target_link_libraries(Main db)
 
