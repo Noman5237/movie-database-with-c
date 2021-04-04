@@ -33,6 +33,7 @@ enum exceptionResponder {
 	SILENT = 0x0,
 	FATAL,
 	VERBOSE = 0x10,
+	DEBUG
 };
 
 

@@ -4,11 +4,29 @@
  * @date: 3/18/2021; 2:51 AM
  */
 
-#include <Database/database.h>
+#include <input.h>
+
+int validator_name(char *name) {
+	int len = strlen(name);
+	if (len < 5) {
+		return 0;
+	}
+	return 1;
+}
+
+int hi() {
+	printf("Hi\n");
+	return 0;
+}
+
+int about() {
+	printf("about\n");
+	return 0;
+}
 
 int main() {
-	DB *db = db_import(
-			"P:\\TEMP\\CoreProgramming\\CProjects\\Homework\\MovieDatabase\\resources\\database\\HarryPotterFranchise");
-	db_print(db);
-	db_destroy(db);
+	input_menu(2, input_menuOption_init("Hi", "This is a simple hi", hi),
+	           input_menuOption_init("About", "This is the content creator", about));
+	return 0;
 }
+

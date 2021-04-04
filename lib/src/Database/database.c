@@ -30,18 +30,30 @@ DB *db_init(char *dbName) {
 }
 
 int db_add(DB *db, node_t data) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
 	return ll_append(db->list, data);
 }
 
 int db_erase(DB *db, int index) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
 	return ll_erase(db->list, index);
 }
 
 
 DB *db_query(DB *db, char *queryName, char *expression) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER), (DB *) NULL;
+	}
 	DB *queryDatabase = db_init(queryName);
 	int dbSize = ll_size(db->list);
 	Query *query = query_init(expression);
+	if (!query) {
+		return EXCEPTION_NEW(INVALID_POINTER), (DB *) NULL;
+	}
 	for (int i = 0; i < dbSize; i++) {
 		node_t data = ll_get(db->list, i);
 		if (query_evaluate(query, data)) {
@@ -52,6 +64,9 @@ DB *db_query(DB *db, char *queryName, char *expression) {
 }
 
 int db_destroy(DB *db) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
 	ll_destroy(db->list);
 	free(db->dbName);
 	free(db);
@@ -59,6 +74,9 @@ int db_destroy(DB *db) {
 }
 
 int db_export(DB *db, char *pathToOutputDir) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
 	FILE *fp;
 	char outputPath[PATH_MAX];
 	strcpy(outputPath, pathToOutputDir);
@@ -74,6 +92,7 @@ int db_export(DB *db, char *pathToOutputDir) {
 		node_fileWrite(ll_get(db->list, i), fp);
 	}
 	
+	fclose(fp);
 	return 0;
 }
 
@@ -97,6 +116,9 @@ DB *db_import(char *filePath) {
 }
 
 int db_print(DB *db) {
+	if (!db) {
+		return EXCEPTION_NEW(INVALID_POINTER);
+	}
 	
 	/* ------------------ Name ------------------ */
 	

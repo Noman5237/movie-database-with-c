@@ -11,7 +11,7 @@
 int exception_new(int errorCode, const char *file, int line, int (*handler)(int)) {
 	int responseCode = handler(errorCode);
 	
-	if (responseCode & VERBOSE) {
+	if (responseCode & DEBUG) {
 		// With VERBOSE we provide as much as information as we can
 		printf("Trace => %s: %d\n", file, line);
 	}

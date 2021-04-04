@@ -6,9 +6,8 @@
 
 #include <Database/database.h>
 
-#define DATABASE_DIR "P:\\TEMP\\CoreProgramming\\CProjects\\Homework\\MovieDatabase\\resources\\database\\"
-
 int main() {
+	
 	DB *db = db_init("Harry Potter Franchise");
 	db_add(db, movie_init("Philosopher's Stone", "2001",
 	                      "Daniel Radcliffe", "Emma Watson",
@@ -43,9 +42,10 @@ int main() {
 	db_print(sampleQuery);
 	db_export(sampleQuery, DATABASE_DIR);
 	db_destroy(sampleQuery);
-
-//	DB *onlyRadCliffe = db_query(db, "onlyRadCliffe", "actor : `Radcliffe`");
-	DB *onlyRadCliffe = db_import(DATABASE_DIR "onlyRadCliffe.db");
+	
+	DB *onlyRadCliffe = db_query(db, "onlyRadCliffe", "actor : `Radcliffe`");
+//	DB *onlyRadCliffe = db_import(DATABASE_DIR "onlyRadCliffe.db");
+	db_export(onlyRadCliffe, DATABASE_DIR);
 	db_print(onlyRadCliffe);
 	
 	db_print(db);
