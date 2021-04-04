@@ -9,6 +9,8 @@
 
 #include <Database/queryParser.h>
 
+#define PATH_MAX 260
+
 typedef struct Database {
 	char *dbName;
 	LinkedList *list;
