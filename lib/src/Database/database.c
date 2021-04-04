@@ -162,7 +162,7 @@ int db_print(DB *db) {
 	for (int i = 0; i < dbSize; i++) {
 		printf("|");
 //		itoa(i, indexStr, 10);
-		i = atoi(indexStr);
+		sprintf(indexStr, "%d", i);
 		printMin(indexStr, NODE_COL_CHARS_MAX);
 		node_print(ll_get(db->list, i));
 		printf("\n");
